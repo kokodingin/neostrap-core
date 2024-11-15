@@ -1,0 +1,23 @@
+.form-control,
+.form-select,
+.form-check-input {
+  border-color: $dark;
+
+  &:focus {
+    border-color: $dark;
+    box-shadow: $focus-ring-box-shadow;
+  }
+}
+
+.input-group-text {
+  border-color: $dark;
+}
+
+.form-check-input {
+  transition: all .2s;
+
+  &:checked {
+    border-color: $dark;
+    background-color: $dark;
+  }
+}

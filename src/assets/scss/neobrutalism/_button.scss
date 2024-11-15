@@ -1,0 +1,79 @@
+.btn {
+  border-color: $dark;
+  box-shadow: 0.35rem 0.35rem 0 $dark;
+  transition: all 0.1s;
+  transform: translateY(-0.35rem) translateX(-0.35rem);
+
+  &:disabled, &.disabled {
+    border-color: $dark !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 $dark;
+    transform: translateY(0) translateX(0);
+    border-color: $dark !important;
+    outline: none;
+  }
+
+  &-raised {
+    box-shadow: 0.35rem 0.35rem 0 $dark;
+
+    &:disabled, &.disabled {
+      border-color: $dark !important;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 $dark;
+      transform: translateY(0) translateX(0);
+    }
+
+    &-sm {
+      box-shadow: 0.25rem 0.25rem 0 $dark;
+
+      &:disabled, &.disabled {
+        border-color: $dark !important;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: 0 0 0 $dark;
+        transform: translateY(0) translateX(0);
+      }
+    }
+
+    &-lg {
+      box-shadow: 0.625rem 0.625rem 0 $dark;
+
+      &:disabled, &.disabled {
+        border-color: $dark !important;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: 0 0 0 $dark;
+        transform: translateY(0) translateX(0);
+      }
+    }
+
+    &-xl {
+      box-shadow: 0.875rem 0.875rem 0 $dark;
+
+      &:disabled, &.disabled {
+        border-color: $dark !important;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: 0 0 0 $dark;
+        transform: translateY(0) translateX(0);
+      }
+    }
+  }
+}

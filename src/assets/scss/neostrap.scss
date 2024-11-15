@@ -1,0 +1,15 @@
+@import './bootstrap.scss';
+@import './neobrutalism/main.scss';
+
+// ------------ Font ------------------------- //
+/* JetBrains Mono */
+.font-jetbrains-mono,
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Inter */
+.font-dm-sans,
+.font-heading {
+  font-family: 'DM Sans', sans-serif;
+}
