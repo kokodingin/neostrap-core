@@ -126,7 +126,7 @@ const inlineBuildConfig: InlineConfig = {
 * A Vite plugin that removes certain attributes from HTML files.
 * @returns {import('vite').Plugin} The Vite plugin.
 */
-const noAttr = (mode: string) => {
+const noAttr = (mode: string): import('vite').Plugin => {
   return {
     name: 'no-attribute',
     transformIndexHtml(html: string) {      
@@ -139,6 +139,7 @@ const noAttr = (mode: string) => {
 
       const result = replaceMultiple(html, [
         { 'type="module"': '' },
+        { 'import.meta.url': '' },
         { crossorigin: '' },
       ]);
 

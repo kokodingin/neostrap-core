@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>{{ title }} - {{ web_title }}</title>
     {% block linksheaderfirst %}{% endblock %}
     {% block scriptheaderfirst %}{% endblock %}
@@ -16,6 +16,8 @@
     {% block scriptheader %}{% endblock %}
   </head>
   <body>
+    {% include 'src/layouts/partials/navbars/primary.html' %}
+
     {% block content %}{% endblock %}
 
     <script src="/assets/js/init-theme.ts" type="module"></script>
