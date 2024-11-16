@@ -7,17 +7,12 @@
     "dev": "vite",
     "build": "vite build && npm run prettify",
     "serve": "vite preview",
-    "prettify": "prettier --write 'dist/*.html'"
+    "prettify": "prettier --write './dist/*.html'"
   },
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kokodingin/neostrap-core.git"
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2
   },
   "keywords": [
     "admin",
