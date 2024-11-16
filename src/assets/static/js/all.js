@@ -2,20 +2,20 @@
  * Gets the current vertical scroll position of the window.
  * Falls back to window.scrollY if pageYOffset is not supported.
  */
-export const getCurrentVerticalPosition = (): number => window.pageYOffset || window.scrollY;
+const getCurrentVerticalPosition = () => window.pageYOffset || window.scrollY;
 
 /**
  * Gets the current horizontal scroll position of the window.
  * Falls back to window.scrollX if pageXOffset is not supported.
  */
-export const getCurrentHorizontalPosition = (): number => window.pageXOffset || window.scrollX;
+const getCurrentHorizontalPosition = () => window.pageXOffset || window.scrollX;
 
 /**
  * Smoothly scrolls the window to the specified coordinates.
  *
  * @param {number} [top=0] - The target vertical scroll position in pixels.
  * @param {number} [left=0] - The target horizontal scroll position in pixels.
- * @param {ScrollBehavior} [behavior='smooth'] - The scroll behavior ('auto', 'smooth', 'instant').
+ * @param {string} [behavior='smooth'] - The scroll behavior ('auto', 'smooth', 'instant').
  *
  * @example
  * // Scroll to the top of the page smoothly
@@ -24,11 +24,11 @@ export const getCurrentHorizontalPosition = (): number => window.pageXOffset || 
  * // Scroll to specific coordinates instantly
  * scrollToPosition(500, 200, 'instant');
  */
-export const scrollToPosition = (
-  top: number = 0,
-  left: number = 0,
-  behavior: ScrollBehavior = 'smooth'
-): void => {
+const scrollToPosition = (
+  top = 0,
+  left = 0,
+  behavior = 'smooth'
+) => {
   window.scrollTo({
     top,
     left,
@@ -40,7 +40,7 @@ export const scrollToPosition = (
  * Retrieves the specified position of an element's bounding rectangle relative to the viewport.
  *
  * @param {HTMLElement | string} element - The target element or a selector string.
- * @param {'top' | 'left' | 'right' | 'bottom'} [position='top'] - The position to retrieve from the bounding rectangle.
+ * @param {string} [position='top'] - The position to retrieve from the bounding rectangle.
  * @returns {number} The specified position of the element's bounding rectangle.
  * @throws {Error} If the element is not found.
  *
@@ -48,11 +48,11 @@ export const scrollToPosition = (
  * // Get the top position of an element
  * getElementPosition('#my-element', 'top');
  */
-export const getElementPosition = (
-  element: HTMLElement | string,
-  position: 'top' | 'left' | 'right' | 'bottom' = 'top'
-): number => {
-  const targetElement: HTMLElement | null =
+const getElementPosition = (
+  element,
+  position = 'top'
+) => {
+  const targetElement = 
     typeof element === 'string' ? document.querySelector(element) : element;
 
   if (!targetElement) {
@@ -73,18 +73,31 @@ export const getElementPosition = (
  * // Scroll to the element with ID 'section-1' with an 80px offset
  * scrollToElement('#section-1', 80);
  */
-export const scrollToElement = (
-  targetSelector: string,
-  offset: number = 0
-): void => {
-  const targetElement: HTMLElement | null = document.querySelector(targetSelector);
+const scrollToElement = (
+  targetSelector,
+  offset = 0
+) => {
+  const targetElement = document.querySelector(targetSelector);
 
   if (!targetElement) {
     throw new Error(`Element with selector '${targetSelector}' not found`);
   }
 
-  const targetPosition: number = getElementPosition(targetElement);
-  const scrollPosition: number = targetPosition - offset;
+  const targetPosition = getElementPosition(targetElement);
+  const scrollPosition = targetPosition - offset;
 
   scrollToPosition(scrollPosition);
 };
+
+// Implementation
+const elementNeedScrollToTarget = document.querySelectorAll('[data-scroll]');
+
+elementNeedScrollToTarget.forEach((el) => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const rectNavbar = getElementPosition('#main-navbar', 'bottom') + 20;
+    const scrollTarget = el.getAttribute('data-scroll');
+    scrollToElement(scrollTarget, rectNavbar);
+  });
+});

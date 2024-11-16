@@ -6,12 +6,13 @@ import {
   UserConfigExport,
   Plugin,
 } from 'vite';
-import fs from 'fs';
-import path, { extname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import nunjucks from 'vite-plugin-nunjucks';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
+import fs from 'fs';
+import legacy from '@vitejs/plugin-legacy'
+import nunjucks from 'vite-plugin-nunjucks';
+import path, { extname, resolve } from 'path';
 
 /**
  * Current file and directory path configuration
@@ -155,13 +156,14 @@ const INLINE_BUILD_CONFIG: InlineConfig = {
     outDir: resolve(CURRENT_DIRNAME, 'dist/assets/bundled/js'),
     lib: {
       name: 'app',
-      formats: ['umd'],
+      formats: ['iife'],
       fileName: 'app',
       entry: './src/assets/js/neostrap.ts',
     },
     rollupOptions: {
       output: {
         entryFileNames: '[name].js',
+        format: 'iife',
       },
     },
   },
@@ -201,10 +203,21 @@ build(INLINE_BUILD_CONFIG);
  */
 const config: UserConfigExport = defineConfig((env) => ({
   publicDir: 'static',
-  base: './',
+  base: env.mode === 'production' ? './' : '/',
   root: SOURCE_ROOT,
+  server: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    cors: true,
+  },
   plugins: [
-    createAttributeCleanerPlugin(env.mode),
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+      renderLegacyChunks: true,
+      modernPolyfills: true,
+    }),
+    // createAttributeCleanerPlugin(env.mode),
     ViteMinifyPlugin({
       html5: true,
       minifyCSS: true,
@@ -252,29 +265,24 @@ const config: UserConfigExport = defineConfig((env) => ({
     alias: {
       '@': normalizePath(resolve(CURRENT_DIRNAME, 'src')),
       '~bootstrap': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap'),
-      '~bootstrap-icons': resolve(
-        CURRENT_DIRNAME,
-        'node_modules/bootstrap-icons',
-      ),
-      '~perfect-scrollbar': resolve(
-        CURRENT_DIRNAME,
-        'node_modules/perfect-scrollbar',
-      ),
+      '~bootstrap-icons': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap-icons'),
+      '~perfect-scrollbar': resolve(CURRENT_DIRNAME, 'node_modules/perfect-scrollbar'),
       '~@fontsource': resolve(CURRENT_DIRNAME, 'node_modules/@fontsource'),
     },
   },
   build: {
     emptyOutDir: true,
     manifest: true,
-    target: 'chrome58',
+    target: 'es2015',
     outDir: resolve(CURRENT_DIRNAME, 'dist'),
     rollupOptions: {
       input: getHtmlFiles(),
       output: {
+        format: 'es',
         entryFileNames: 'assets/bundled/js/[name].js',
-        chunkFileNames: 'assets/bundled/js/[name].js',
+        chunkFileNames: 'assets/bundled/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          const fileName = assetInfo.names?.[0] || assetInfo?.name || 'default';
+          const fileName = assetInfo.name || 'default';
           const extension = extname(fileName).slice(1);
 
           let assetFolder = extension ? `${extension}/` : '';
@@ -285,6 +293,16 @@ const config: UserConfigExport = defineConfig((env) => ({
 
           return `assets/bundled/${assetFolder}[name][extname]`;
         },
+        manualChunks: {
+          vendor: [
+            'bootstrap',
+            'perfect-scrollbar',
+            '@fortawesome/fontawesome-free',
+            'filepond',
+            'apexcharts',
+            'chart.js'
+          ]
+        }
       },
     },
   },
