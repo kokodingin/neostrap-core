@@ -1,12 +1,7 @@
 /**
- * Bootstrap and jQuery global setup for jQuery lovers.
- * 
- * @package NeoStrap
- * @author KoKodingin Digital Nusantara
- * @email kokodingindigitalnusantara@gmail.com
+ * NeoStrap Bootstrap Template
+ * By KoKoDingin Digital Nusantara (KoDiNus Group)
+ * Copyright 2024 KoKoDingin Digital Nusantara (KoDiNus Group)
  */
-import * as bootstrap from 'bootstrap';
-import jQuery from 'jquery';
-
-window.bootstrap = bootstrap;
-window.$ = window.jQuery = jQuery;
+import './core';
+import './icon';
