@@ -11,6 +11,7 @@ import path, { extname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import nunjucks from 'vite-plugin-nunjucks';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
 /**
  * Current file and directory path configuration
@@ -186,7 +187,9 @@ const createAttributeCleanerPlugin = (buildMode: string): Plugin => {
         return result.split(oldValue).join(newValue);
       }, html);
 
-      return buildMode !== 'development' ? cleanHtml : html;
+      return buildMode !== 'development' ?
+        cleanHtml
+        : html;
     },
   };
 };
@@ -202,6 +205,11 @@ const config: UserConfigExport = defineConfig((env) => ({
   root: SOURCE_ROOT,
   plugins: [
     createAttributeCleanerPlugin(env.mode),
+    ViteMinifyPlugin({
+      html5: true,
+      minifyCSS: true,
+      minifyJS: true
+    }),
     nunjucks({
       templatesDir: SOURCE_ROOT,
       variables: prepareTemplateVariables(env.mode),

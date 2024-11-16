@@ -5,7 +5,8 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run prettify",
+    "build:local": "vite build && npm run prettify",
+    "build": "vite build",
     "serve": "vite preview",
     "prettify": "prettier --ignore-path .gitignore --write 'dist/*.html'"
   },
@@ -76,15 +77,19 @@
     "@babel/parser": "^7.26.2",
     "@types/bootstrap": "^5.2.10",
     "@types/feather-icons": "^4.29.4",
+    "@types/html-minifier": "^4.0.5",
     "@types/jquery": "^3.5.32",
     "@types/node": "^22.9.0",
     "fs": "0.0.1-security",
+    "html-minifier": "^4.0.0",
+    "minify": "^11.4.1",
     "path": "^0.12.7",
     "prettier": "^3.3.3",
     "prettify": "^0.1.7",
     "sass": "^1.77.6",
     "tailwind-merge": "^2.5.4",
     "vite": "^5.4.11",
+    "vite-plugin-minify": "^2.0.1",
     "vite-plugin-static-copy": "^2.1.0",
     "vituum": "^1.1.1"
   }
