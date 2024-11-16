@@ -1,0 +1,24 @@
+{% set title = 'An Error Occurred' %}
+{% set filename = '500.html' %}
+
+{% extends 'src/layouts/single.html' %}
+
+{% block styles %}
+<style>
+  .container-full-height {
+    min-height: calc(100vh - 5.5rem);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="container container-full-height d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold text-dark mb-0">500</h1>
+      <h2 class="display-6 fw-semibold text-secondary mb-3">An Error Occurred</h2>
+      <p class="text-muted mb-4">Currently we cannot process your request. Please contact the administrator ASAP!</p>
+
+      <a href="/" class="btn btn-primary btn-neoraised">Kembali Ke Beranda</a>
+    </div>
+  </div>
+{% endblock %}
