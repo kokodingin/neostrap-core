@@ -208,7 +208,9 @@ const config: UserConfigExport = defineConfig((env) => ({
     ViteMinifyPlugin({
       html5: true,
       minifyCSS: true,
-      minifyJS: true
+      minifyJS: true,
+      noNewlinesBeforeTagClose: true,
+      keepClosingSlash: true,
     }),
     nunjucks({
       templatesDir: SOURCE_ROOT,

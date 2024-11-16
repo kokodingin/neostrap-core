@@ -1,4 +1,5 @@
 .btn {
+  // Button Regular -------------------------------
   border-color: $dark;
   transition: all 0.1s;
 
@@ -29,14 +30,14 @@
   &-outline-light {
     color: $dark;
   }
+}
 
-  // .btn-group
-  &-group {
-    transition: all 0.1s;
+// .btn-group -------------------------------
+.btn-group {
+  transition: all 0.1s;
 
-    &-neoraised {
-      @include raised-variant;
-    }
+  &-neoraised {
+    @include raised-variant;
   }
 }
 
