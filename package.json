@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && npm run prettify",
     "serve": "vite preview",
-    "prettify": "prettier --write './dist/**/*.html'"
+    "prettify": "prettier --write 'dist/*.html'"
   },
   "type": "module",
   "repository": {
@@ -21,17 +21,12 @@
   },
   "keywords": [
     "admin",
-    "bootsrap",
-    "5",
+    "bootsrap 5",
+    "admin template",
+    "admin bootstrap",
     "admin",
-    "template",
-    "admin",
-    "bootstrap",
-    "admin",
-    "bootstrap",
-    "theme",
-    "neobrutalism",
-    "bootstrap",
+    "bootstrap theme",
+    "neobrutalism bootstrap",
     "neobrutalism"
   ],
   "author": "KoKodingin Digital Nusantara",

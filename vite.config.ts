@@ -52,7 +52,7 @@ const getVariables = (mode: string): Record<string, object> => {
   return variables;
 };
 
-// Modules and extensions to copy
+// Modules and vendors to copy
 const modulesToCopy: Record<string, boolean> = {
   '@icon/dripicons': false,
   '@fortawesome/fontawesome-free': false,
@@ -95,7 +95,7 @@ const copyModules = Object.keys(modulesToCopy).map((moduleName) => {
   const withDist = modulesToCopy[moduleName];
   return {
     src: normalizePath(resolve(__dirname, `./node_modules/${moduleName}${withDist ? '/dist' : ''}`)),
-    dest: 'assets/extensions',
+    dest: 'assets/vendors',
     rename: moduleName,
   };
 });
@@ -107,7 +107,7 @@ const inlineBuildConfig: InlineConfig = {
   configFile: false,
   build: {
     emptyOutDir: false,
-    outDir: resolve(__dirname, 'dist/assets/compiled/js'),
+    outDir: resolve(__dirname, 'dist/assets/bundled/js'),
     lib: {
       name: 'app',
       formats: ['umd'],
@@ -129,7 +129,7 @@ const inlineBuildConfig: InlineConfig = {
 const noAttr = (mode: string): import('vite').Plugin => {
   return {
     name: 'no-attribute',
-    transformIndexHtml(html: string) {      
+    transformIndexHtml(html: string) {
       function replaceMultiple(str: string, replacements: Array<Record<string, string>>): string {
         return replacements.reduce((acc, replacement) => {
           const [[oldStr, newStr]] = Object.entries(replacement);
@@ -157,9 +157,9 @@ const config: UserConfigExport = defineConfig((env) => ({
   base: './',
   root,
   plugins: [
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
+    // legacy({
+    //   targets: ['defaults', 'not IE 11'],
+    // }),
     noAttr(env.mode),
     nunjucks({
       templatesDir: root,
@@ -180,7 +180,7 @@ const config: UserConfigExport = defineConfig((env) => ({
     viteStaticCopy({
       targets: [
         { src: normalizePath(resolve(__dirname, './src/assets/static')), dest: 'assets' },
-        { src: normalizePath(resolve(__dirname, './dist/assets/compiled/fonts')), dest: 'assets/compiled/css' },
+        // { src: normalizePath(resolve(__dirname, './dist/assets/bundled/fonts')), dest: 'assets/bundled/css' },
         { src: normalizePath(resolve(__dirname, './node_modules/bootstrap-icons/bootstrap-icons.svg')), dest: 'assets/static/images' },
         ...copyModules,
       ],
@@ -199,17 +199,18 @@ const config: UserConfigExport = defineConfig((env) => ({
     },
   },
   build: {
-    emptyOutDir: false,
+    emptyOutDir: true,
     manifest: true,
     target: 'chrome58',
     outDir: resolve(__dirname, 'dist'),
     rollupOptions: {
       input: files,
       output: {
-        entryFileNames: 'assets/compiled/js/[name].js',
-        chunkFileNames: 'assets/compiled/js/[name].js',
+        entryFileNames: 'assets/bundled/js/[name].js',
+        chunkFileNames: 'assets/bundled/js/[name].js',
         assetFileNames: (assetInfo) => {
           const fileName = assetInfo.names?.[0] || assetInfo?.name || 'default';
+
           const extension = extname(fileName).slice(1);
           let folder = extension ? `${extension}/` : '';
 
@@ -217,7 +218,11 @@ const config: UserConfigExport = defineConfig((env) => ({
             folder = 'fonts/';
           }
 
-          return `assets/compiled/${folder}[name][extname]`;
+          if (['jpg', 'gif', 'svg', 'jpeg', 'webp', 'png'].includes(extension)) {
+            folder = 'images/';
+          }
+
+          return `assets/bundled/${folder}[name][extname]`;
         },
       },
     },

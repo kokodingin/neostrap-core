@@ -1,8 +1,6 @@
 .btn {
   border-color: $dark;
-  box-shadow: 0.35rem 0.35rem 0 $dark;
   transition: all 0.1s;
-  transform: translateY(-0.35rem) translateX(-0.35rem);
 
   &:disabled, &.disabled {
     border-color: $dark !important;
@@ -11,8 +9,6 @@
   &:hover,
   &:active,
   &:focus {
-    box-shadow: 0 0 0 $dark;
-    transform: translateY(0) translateX(0);
     border-color: $dark !important;
     outline: none;
   }

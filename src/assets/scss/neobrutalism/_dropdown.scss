@@ -1,0 +1,10 @@
+.dropdown {
+  &-menu {
+    border-color: $dark;
+    box-shadow: 0.35rem 0.35rem 0 $dark;
+  }
+
+  &-divider {
+    border-color: $dark;
+  }
+}
