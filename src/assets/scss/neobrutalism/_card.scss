@@ -1,18 +1,8 @@
 .card {
   border-color: $dark;
 
-  &-raised {
-    box-shadow: 0.25rem 0.25rem 0 $dark;
-
-    &-sm {
-      box-shadow: 0.125rem 0.125rem 0 $dark;
-    }
-    &-lg {
-      box-shadow: 0.5rem 0.5rem 0 $dark;
-    }
-    &-xl {
-      box-shadow: 0.625rem 0.625rem 0 $dark;
-    }
+  &-neoraised {
+    @include static-raised-variant;
   }
 
   &-header,

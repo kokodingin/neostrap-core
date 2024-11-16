@@ -2,6 +2,14 @@
   border-color: $dark;
   transition: all 0.1s;
 
+  &-check:checked,
+  &-check:hover,
+  &-check:active {
+    + .btn {
+      border-color: $dark;
+    }
+  }
+
   &:disabled,
   &.disabled {
     border-color: $dark !important;
@@ -14,67 +22,29 @@
     outline: none;
   }
 
-  &-raised {
-    box-shadow: 0.35rem 0.35rem 0 $dark;
+  &-neoraised {
+    @include raised-variant;
+  }
 
-    &:disabled,
-    &.disabled {
-      border-color: $dark !important;
-    }
+  &-outline-light {
+    color: $dark;
+  }
 
-    &:hover,
-    &:active,
-    &:focus {
-      box-shadow: 0 0 0 $dark;
-      transform: translateY(0) translateX(0);
-    }
+  // .btn-group
+  &-group {
+    transition: all 0.1s;
 
-    &-sm {
-      box-shadow: 0.25rem 0.25rem 0 $dark;
-
-      &:disabled,
-      &.disabled {
-        border-color: $dark !important;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        box-shadow: 0 0 0 $dark;
-        transform: translateY(0) translateX(0);
-      }
-    }
-
-    &-lg {
-      box-shadow: 0.625rem 0.625rem 0 $dark;
-
-      &:disabled,
-      &.disabled {
-        border-color: $dark !important;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        box-shadow: 0 0 0 $dark;
-        transform: translateY(0) translateX(0);
-      }
-    }
-
-    &-xl {
-      box-shadow: 0.875rem 0.875rem 0 $dark;
-
-      &:disabled,
-      &.disabled {
-        border-color: $dark !important;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        box-shadow: 0 0 0 $dark;
-        transform: translateY(0) translateX(0);
-      }
+    &-neoraised {
+      @include raised-variant;
     }
   }
+}
+
+.btn-back-top {
+  position: fixed;
+  z-index: $zindex-toast + 10;
+  bottom: 1rem;
+  right: 1rem;
+
+  @extend .btn-neoraised;
 }

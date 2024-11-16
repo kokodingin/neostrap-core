@@ -1,0 +1,93 @@
+// _core-neobrutalism.scss
+
+@mixin raised-variant {
+  box-shadow: 0.35rem 0.35rem 0 $dark;
+
+  &:disabled,
+  &.disabled {
+    border-color: $dark !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 $dark;
+    transform: translateY(0) translateX(0);
+  }
+
+  &-sm {
+    box-shadow: 0.25rem 0.25rem 0 $dark;
+
+    &:disabled,
+    &.disabled {
+      border-color: $dark !important;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 $dark;
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  &-lg {
+    box-shadow: 0.625rem 0.625rem 0 $dark;
+
+    &:disabled,
+    &.disabled {
+      border-color: $dark !important;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 $dark;
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  &-xl {
+    box-shadow: 0.875rem 0.875rem 0 $dark;
+
+    &:disabled,
+    &.disabled {
+      border-color: $dark !important;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 $dark;
+      transform: translateY(0) translateX(0);
+    }
+  }
+}
+
+@mixin static-raised-variant {
+  box-shadow: 0.25rem 0.25rem 0 $dark;
+
+  &-sm {
+    box-shadow: 0.125rem 0.125rem 0 $dark;
+  }
+  &-lg {
+    box-shadow: 0.5rem 0.5rem 0 $dark;
+  }
+  &-xl {
+    box-shadow: 0.625rem 0.625rem 0 $dark;
+  }
+}
+
+@mixin bottom-raised-variant {
+  box-shadow: 0 0.25rem 0 $dark;
+
+  &-sm {
+    box-shadow: 0 0.125rem 0 $dark;
+  }
+  &-lg {
+    box-shadow: 0 0.5rem 0 $dark;
+  }
+  &-xl {
+    box-shadow: 0 0.625rem 0 $dark;
+  }
+}

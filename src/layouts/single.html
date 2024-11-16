@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ title }} - {{ web_title }}</title>
-    {% block linksheaderfirst %}{% endblock %} {% block scriptheaderfirst %}{%
-    endblock %} {% include 'src/layouts/partials/font.html' %}
+    <title>{{ title }} - {{ appName }}</title>
+    {% block linksheaderfirst %}{% endblock %} 
+    {% block scriptheaderfirst %}{% endblock %} 
+    
+    {% include 'src/layouts/partials/font.html' %}
+    {% include 'src/layouts/partials/favicon.html' %}
 
     <link rel="stylesheet" href="/assets/scss/neostrap.scss" />
 
-    {% block linksheader %}{% endblock %} {% block scriptheader %}{% endblock %}
+    {% block linksheader %}{% endblock %} 
+    {% block scriptheader %}{% endblock %}
+
+    {% block styles %}{% endblock %} 
   </head>
   <body>
-    {% include 'src/layouts/partials/navbars/primary.html' %} {% block content
-    %}{% endblock %}
+    {% include 'src/layouts/partials/navbars/primary.html' %} 
+    
+    {% block content %}{% endblock %}
+
+    {% include 'src/layouts/partials/footer/single.html' %} 
 
     <script src="/assets/js/init-theme.ts" type="module"></script>
     <script src="/assets/js/main.ts" type="module"></script>

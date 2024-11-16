@@ -76,6 +76,7 @@
     "@babel/parser": "^7.26.2",
     "@types/bootstrap": "^5.2.10",
     "@types/feather-icons": "^4.29.4",
+    "@types/jquery": "^3.5.32",
     "@types/node": "^22.9.0",
     "fs": "0.0.1-security",
     "path": "^0.12.7",

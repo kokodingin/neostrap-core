@@ -1,0 +1,12 @@
+.navbar {
+  &-neoraised-bottom {
+    border: 0;
+    border-bottom: 1px solid $dark;
+    @include bottom-raised-variant;
+  }
+
+  &-neoraised {
+    border: 1px solid $dark;
+    @include static-raised-variant;
+  }
+}

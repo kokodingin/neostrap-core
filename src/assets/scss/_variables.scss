@@ -69,7 +69,7 @@ $colors: (
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
-$min-contrast-ratio: 2.05 !default;
+$min-contrast-ratio: 1.5 !default;
 
 // Customize the light and dark text colors for use in our color contrast function.
 $color-contrast-dark: $black !default;
@@ -454,8 +454,8 @@ $body-emphasis-color: $black !default;
 //
 // Style anchor elements.
 
-$link-color: $gray-700 !default;
-$link-decoration: none !default;
+$link-color: $gray-900 !default;
+$link-decoration: underline !default;
 $link-shade-percentage: 20% !default;
 $link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration: null !default;
@@ -618,7 +618,7 @@ $font-family-sans-serif:
   'Segoe UI Emoji',
   'Segoe UI Symbol',
   'Noto Color Emoji' !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+$font-family-monospace: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace !default;
 // stylelint-enable value-keyword-case
 $font-family-base: var(--#{$prefix}font-sans-serif) !default;
@@ -666,7 +666,7 @@ $font-sizes: (
 
 // scss-docs-start headings-variables
 $headings-margin-bottom: $spacer * 0.5 !default;
-$headings-font-family: 'Inter', $font-family-sans-serif !default;
+$headings-font-family: 'Space Grotesk', $font-family-sans-serif !default;
 $headings-font-style: null !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;

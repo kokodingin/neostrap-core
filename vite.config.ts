@@ -11,7 +11,6 @@ import path, { extname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import nunjucks from 'vite-plugin-nunjucks';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import legacy from '@vitejs/plugin-legacy';
 
 /**
  * Current file and directory path configuration
@@ -31,8 +30,10 @@ interface ModuleCopyConfig {
  * Interface for template variables
  */
 interface TemplateVariables {
-  web_title: string;
+  appName: string;
   isDev: boolean;
+  year: number;
+  bootstrapClasses: string[];
 }
 
 /**
@@ -70,8 +71,20 @@ const prepareTemplateVariables = (
       ? `layouts/${filename}`
       : filename;
     templateVars[`${templatePath}.html`] = {
-      web_title: 'NeoStrap Dashboard',
+      year: new Date().getFullYear(),
+      appName: 'NeoStrap Dashboard',
       isDev: buildMode === 'development',
+      bootstrapClasses: [
+        'primary',
+        'secondary',
+        'success',
+        'danger',
+        'warning',
+        'info',
+        'light',
+        'dark',
+        'link'
+      ]
     };
   });
 
@@ -105,7 +118,6 @@ const VENDOR_MODULES: ModuleCopyConfig = {
   parsleyjs: true,
   sweetalert2: true,
   summernote: true,
-  jquery: true,
   quill: true,
   tinymce: false,
   'toastify-js': false,
@@ -259,12 +271,6 @@ const config: UserConfigExport = defineConfig((env) => ({
 
           if (['woff', 'woff2', 'ttf'].includes(extension)) {
             assetFolder = 'fonts/';
-          }
-
-          if (
-            ['jpg', 'gif', 'svg', 'jpeg', 'webp', 'png'].includes(extension)
-          ) {
-            assetFolder = 'images/';
           }
 
           return `assets/bundled/${assetFolder}[name][extname]`;
