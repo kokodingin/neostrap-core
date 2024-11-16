@@ -6,10 +6,7 @@
       "request": "launch",
       "name": "Run Dev Server",
       "runtimeExecutable": "bun",
-      "runtimeArgs": [
-        "run",
-        "dev"
-      ],
+      "runtimeArgs": ["run", "dev"],
       "console": "integratedTerminal"
     },
     {
@@ -17,10 +14,7 @@
       "request": "launch",
       "name": "Run Build",
       "runtimeExecutable": "bun",
-      "runtimeArgs": [
-        "run",
-        "build"
-      ],
+      "runtimeArgs": ["run", "build"],
       "console": "integratedTerminal"
     },
     {
@@ -28,10 +22,7 @@
       "request": "launch",
       "name": "Run Preview Server",
       "runtimeExecutable": "bun",
-      "runtimeArgs": [
-        "run",
-        "serve"
-      ],
+      "runtimeArgs": ["run", "serve"],
       "console": "integratedTerminal"
     }
   ]

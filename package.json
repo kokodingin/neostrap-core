@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && npm run prettify",
     "serve": "vite preview",
-    "prettify": "prettier --write 'dist/*.html'"
+    "prettify": "prettier --ignore-path .gitignore --write 'dist/*.html'"
   },
   "type": "module",
   "repository": {

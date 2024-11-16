@@ -1,19 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>{{ title }} - {{ web_title }}</title>
-    {% block linksheaderfirst %}{% endblock %}
-    {% block scriptheaderfirst %}{% endblock %}
+    {% block linksheaderfirst %}{% endblock %} {% block scriptheaderfirst %}{%
+    endblock %} {% include 'src/layouts/partials/font.html' %}
 
-    {% include 'src/layouts/partials/font.html' %}
+    <link rel="stylesheet" href="/assets/scss/neostrap.scss" />
 
-    <link rel="stylesheet" href="/assets/scss/neostrap.scss"/>
-
-    {% block linksheader %}{% endblock %}
-    {% block scriptheader %}{% endblock %}
+    {% block linksheader %}{% endblock %} {% block scriptheader %}{% endblock %}
   </head>
   <body>
     {% block content %}{% endblock %}

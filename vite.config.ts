@@ -1,4 +1,11 @@
-import { defineConfig, normalizePath, build } from 'vite';
+import {
+  defineConfig,
+  normalizePath,
+  build,
+  InlineConfig,
+  UserConfigExport,
+  Plugin,
+} from 'vite';
 import fs from 'fs';
 import path, { extname, resolve } from 'path';
 import { fileURLToPath } from 'url';
@@ -6,54 +13,75 @@ import nunjucks from 'vite-plugin-nunjucks';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import legacy from '@vitejs/plugin-legacy';
 
-// TypeScript types
-import { InlineConfig, UserConfigExport } from 'vite';
-
-// Get current file and directory names
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Define the root directory for Vite
-const root = resolve(__dirname, 'src');
+/**
+ * Current file and directory path configuration
+ */
+const CURRENT_FILENAME = fileURLToPath(import.meta.url);
+const CURRENT_DIRNAME = path.dirname(CURRENT_FILENAME);
+const SOURCE_ROOT = resolve(CURRENT_DIRNAME, 'src');
 
 /**
-* Retrieve HTML files from the source directory.
-* @returns {Record<string, string>} An object where the keys are the filenames (without the extension) and the values are the full file paths.
-*/
-const getFiles = (): Record<string, string> => {
-  const files: Record<string, string> = {};
+ * Interface for module copy configuration
+ */
+interface ModuleCopyConfig {
+  [key: string]: boolean;
+}
 
-  fs.readdirSync(root)
+/**
+ * Interface for template variables
+ */
+interface TemplateVariables {
+  web_title: string;
+  isDev: boolean;
+}
+
+/**
+ * Retrieves HTML files from the source directory
+ * @returns {Record<string, string>} Object containing filename-path pairs
+ * @description Scans the source directory for HTML files and creates a mapping of
+ * filenames (without extension) to their full file paths
+ */
+const getHtmlFiles = (): Record<string, string> => {
+  const htmlFiles: Record<string, string> = {};
+
+  fs.readdirSync(SOURCE_ROOT)
     .filter((filename) => filename.endsWith('.html'))
     .forEach((filename) => {
-      files[filename.slice(0, -5)] = resolve(root, filename);
+      const baseFilename = filename.slice(0, -5);
+      htmlFiles[baseFilename] = resolve(SOURCE_ROOT, filename);
     });
 
-  return files;
+  return htmlFiles;
 };
-
-// Get all files to be used as input for Vite
-const files = getFiles();
 
 /**
-* Prepare variables for Nunjucks templates.
-* @param {string} mode The current build mode ('development' or 'production').
-* @returns {Record<string, object>} An object containing variables for each HTML file.
-*/
-const getVariables = (mode: string): Record<string, object> => {
-  const variables: Record<string, object> = {};
-  Object.keys(files).forEach((filename) => {
-    if (filename.includes('layouts')) filename = `layouts/${filename}`;
-    variables[filename + '.html'] = {
+ * Prepares template variables for Nunjucks rendering
+ * @param {string} buildMode - Current build mode ('development' or 'production')
+ * @returns {Record<string, TemplateVariables>} Variables object for each HTML file
+ */
+const prepareTemplateVariables = (
+  buildMode: string,
+): Record<string, TemplateVariables> => {
+  const templateVars: Record<string, TemplateVariables> = {};
+  const htmlFiles = getHtmlFiles();
+
+  Object.keys(htmlFiles).forEach((filename) => {
+    const templatePath = filename.includes('layouts')
+      ? `layouts/${filename}`
+      : filename;
+    templateVars[`${templatePath}.html`] = {
       web_title: 'NeoStrap Dashboard',
-      isDev: mode === 'development',
+      isDev: buildMode === 'development',
     };
   });
-  return variables;
+
+  return templateVars;
 };
 
-// Modules and vendors to copy
-const modulesToCopy: Record<string, boolean> = {
+/**
+ * Configuration for vendor modules to be copied
+ */
+const VENDOR_MODULES: ModuleCopyConfig = {
   '@icon/dripicons': false,
   '@fortawesome/fontawesome-free': false,
   'rater-js': false,
@@ -88,26 +116,30 @@ const modulesToCopy: Record<string, boolean> = {
 };
 
 /**
-* Prepare the list of modules to be copied.
-* @returns {Array<{ src: string; dest: string; rename: string }>} An array of objects describing the modules to be copied.
-*/
-const copyModules = Object.keys(modulesToCopy).map((moduleName) => {
-  const withDist = modulesToCopy[moduleName];
-  return {
-    src: normalizePath(resolve(__dirname, `./node_modules/${moduleName}${withDist ? '/dist' : ''}`)),
+ * Prepares module copy configurations for the build process
+ * @returns {Array<{src: string; dest: string; rename: string}>} Array of copy configurations
+ */
+const prepareModuleCopyConfig = () => {
+  return Object.entries(VENDOR_MODULES).map(([moduleName, hasDistFolder]) => ({
+    src: normalizePath(
+      resolve(
+        CURRENT_DIRNAME,
+        `./node_modules/${moduleName}${hasDistFolder ? '/dist' : ''}`,
+      ),
+    ),
     dest: 'assets/vendors',
     rename: moduleName,
-  };
-});
+  }));
+};
 
 /**
-* Inline build configuration for Vite.
-*/
-const inlineBuildConfig: InlineConfig = {
+ * Inline build configuration for application bundling
+ */
+const INLINE_BUILD_CONFIG: InlineConfig = {
   configFile: false,
   build: {
     emptyOutDir: false,
-    outDir: resolve(__dirname, 'dist/assets/bundled/js'),
+    outDir: resolve(CURRENT_DIRNAME, 'dist/assets/bundled/js'),
     lib: {
       name: 'app',
       formats: ['umd'],
@@ -123,66 +155,71 @@ const inlineBuildConfig: InlineConfig = {
 };
 
 /**
-* A Vite plugin that removes certain attributes from HTML files.
-* @returns {import('vite').Plugin} The Vite plugin.
-*/
-const noAttr = (mode: string): import('vite').Plugin => {
+ * Creates a Vite plugin to handle HTML attribute cleaning
+ * @param {string} buildMode - Current build mode
+ * @returns {Plugin} Configured Vite plugin
+ */
+const createAttributeCleanerPlugin = (buildMode: string): Plugin => {
   return {
-    name: 'no-attribute',
+    name: 'attribute-cleaner',
     transformIndexHtml(html: string) {
-      function replaceMultiple(str: string, replacements: Array<Record<string, string>>): string {
-        return replacements.reduce((acc, replacement) => {
-          const [[oldStr, newStr]] = Object.entries(replacement);
-          return acc.split(oldStr).join(newStr);
-        }, str);
-      }
-
-      const result = replaceMultiple(html, [
+      const attributeReplacements = [
         { 'type="module"': '' },
         { 'import.meta.url': '' },
         { crossorigin: '' },
-      ]);
+      ];
 
-      return mode !== 'development' ? result : html;
+      const cleanHtml = attributeReplacements.reduce((result, replacement) => {
+        const [[oldValue, newValue]] = Object.entries(replacement);
+        return result.split(oldValue).join(newValue);
+      }, html);
+
+      return buildMode !== 'development' ? cleanHtml : html;
     },
   };
 };
 
-// Start building with the inline configuration
-build(inlineBuildConfig);
+build(INLINE_BUILD_CONFIG);
 
-// Vite configuration export
+/**
+ * Main Vite configuration
+ */
 const config: UserConfigExport = defineConfig((env) => ({
   publicDir: 'static',
   base: './',
-  root,
+  root: SOURCE_ROOT,
   plugins: [
-    // legacy({
-    //   targets: ['defaults', 'not IE 11'],
-    // }),
-    noAttr(env.mode),
+    createAttributeCleanerPlugin(env.mode),
     nunjucks({
-      templatesDir: root,
-      variables: getVariables(env.mode),
+      templatesDir: SOURCE_ROOT,
+      variables: prepareTemplateVariables(env.mode),
       nunjucksEnvironment: {
         filters: {
-          containString: (str: string, containStr: string): boolean => {
-            if (!str.length) return false;
-            return str.includes(containStr);
+          containString: (str: string, searchStr: string): boolean => {
+            return str.length > 0 && str.includes(searchStr);
           },
-          startsWith: (str: string, targetStr: string): boolean => {
-            if (!str.length) return false;
-            return str.startsWith(targetStr);
+          startsWith: (str: string, prefix: string): boolean => {
+            return str.length > 0 && str.startsWith(prefix);
           },
         },
       },
     }),
     viteStaticCopy({
       targets: [
-        { src: normalizePath(resolve(__dirname, './src/assets/static')), dest: 'assets' },
-        // { src: normalizePath(resolve(__dirname, './dist/assets/bundled/fonts')), dest: 'assets/bundled/css' },
-        { src: normalizePath(resolve(__dirname, './node_modules/bootstrap-icons/bootstrap-icons.svg')), dest: 'assets/static/images' },
-        ...copyModules,
+        {
+          src: normalizePath(resolve(CURRENT_DIRNAME, './src/assets/static')),
+          dest: 'assets',
+        },
+        {
+          src: normalizePath(
+            resolve(
+              CURRENT_DIRNAME,
+              './node_modules/bootstrap-icons/bootstrap-icons.svg',
+            ),
+          ),
+          dest: 'assets/static/images',
+        },
+        ...prepareModuleCopyConfig(),
       ],
       watch: {
         reloadPageOnChange: true,
@@ -191,38 +228,46 @@ const config: UserConfigExport = defineConfig((env) => ({
   ],
   resolve: {
     alias: {
-      '@': normalizePath(resolve(__dirname, 'src')),
-      '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
-      '~bootstrap-icons': resolve(__dirname, 'node_modules/bootstrap-icons'),
-      '~perfect-scrollbar': resolve(__dirname, 'node_modules/perfect-scrollbar'),
-      '~@fontsource': resolve(__dirname, 'node_modules/@fontsource'),
+      '@': normalizePath(resolve(CURRENT_DIRNAME, 'src')),
+      '~bootstrap': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap'),
+      '~bootstrap-icons': resolve(
+        CURRENT_DIRNAME,
+        'node_modules/bootstrap-icons',
+      ),
+      '~perfect-scrollbar': resolve(
+        CURRENT_DIRNAME,
+        'node_modules/perfect-scrollbar',
+      ),
+      '~@fontsource': resolve(CURRENT_DIRNAME, 'node_modules/@fontsource'),
     },
   },
   build: {
     emptyOutDir: true,
     manifest: true,
     target: 'chrome58',
-    outDir: resolve(__dirname, 'dist'),
+    outDir: resolve(CURRENT_DIRNAME, 'dist'),
     rollupOptions: {
-      input: files,
+      input: getHtmlFiles(),
       output: {
         entryFileNames: 'assets/bundled/js/[name].js',
         chunkFileNames: 'assets/bundled/js/[name].js',
         assetFileNames: (assetInfo) => {
           const fileName = assetInfo.names?.[0] || assetInfo?.name || 'default';
-
           const extension = extname(fileName).slice(1);
-          let folder = extension ? `${extension}/` : '';
+
+          let assetFolder = extension ? `${extension}/` : '';
 
           if (['woff', 'woff2', 'ttf'].includes(extension)) {
-            folder = 'fonts/';
+            assetFolder = 'fonts/';
           }
 
-          if (['jpg', 'gif', 'svg', 'jpeg', 'webp', 'png'].includes(extension)) {
-            folder = 'images/';
+          if (
+            ['jpg', 'gif', 'svg', 'jpeg', 'webp', 'png'].includes(extension)
+          ) {
+            assetFolder = 'images/';
           }
 
-          return `assets/bundled/${folder}[name][extname]`;
+          return `assets/bundled/${assetFolder}[name][extname]`;
         },
       },
     },

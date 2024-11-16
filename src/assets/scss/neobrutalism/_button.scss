@@ -2,7 +2,8 @@
   border-color: $dark;
   transition: all 0.1s;
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     border-color: $dark !important;
   }
 
@@ -16,7 +17,8 @@
   &-raised {
     box-shadow: 0.35rem 0.35rem 0 $dark;
 
-    &:disabled, &.disabled {
+    &:disabled,
+    &.disabled {
       border-color: $dark !important;
     }
 
@@ -30,7 +32,8 @@
     &-sm {
       box-shadow: 0.25rem 0.25rem 0 $dark;
 
-      &:disabled, &.disabled {
+      &:disabled,
+      &.disabled {
         border-color: $dark !important;
       }
 
@@ -45,7 +48,8 @@
     &-lg {
       box-shadow: 0.625rem 0.625rem 0 $dark;
 
-      &:disabled, &.disabled {
+      &:disabled,
+      &.disabled {
         border-color: $dark !important;
       }
 
@@ -60,7 +64,8 @@
     &-xl {
       box-shadow: 0.875rem 0.875rem 0 $dark;
 
-      &:disabled, &.disabled {
+      &:disabled,
+      &.disabled {
         border-color: $dark !important;
       }
 
