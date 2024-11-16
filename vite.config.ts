@@ -157,7 +157,7 @@ const INLINE_BUILD_CONFIG: InlineConfig = {
       name: 'app',
       formats: ['umd'],
       fileName: 'app',
-      entry: './src/assets/js/main.ts',
+      entry: './src/assets/js/neostrap.ts',
     },
     rollupOptions: {
       output: {
