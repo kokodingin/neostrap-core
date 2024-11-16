@@ -5,3 +5,4 @@
  */
 import './core';
 import './icon';
+import './helpers';
