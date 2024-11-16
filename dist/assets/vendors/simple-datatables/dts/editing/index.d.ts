@@ -1,1 +1,0 @@
-export { makeEditable } from "./editor";
