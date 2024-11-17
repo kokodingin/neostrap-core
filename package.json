@@ -91,7 +91,7 @@
     "path": "^0.12.7",
     "prettier": "^3.3.3",
     "prettify": "^0.1.7",
-    "sass": "^1.77.6",
+    "sass": "^1.81.0",
     "tailwind-merge": "^2.5.4",
     "vite": "^5.4.11",
     "vite-plugin-minify": "^2.0.1",
