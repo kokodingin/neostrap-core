@@ -8,6 +8,7 @@
     "build:local": "vite build && npm run prettify",
     "build": "vite build",
     "build:prod": "vite build && npm run zip",
+    "build:clean": "rm -rf dist neostrap.zip",
     "serve": "vite preview",
     "zip": "bestzip neostrap.zip dist/*",
     "prettify": "prettier --ignore-path .gitignore --write 'dist/*.html'"
@@ -63,6 +64,7 @@
     "glob": "^11.0.0",
     "jquery": "^3.7.1",
     "jsvectormap": "^1.6.0",
+    "lodash": "4.17.21",
     "nunjucks": "^3.2.4",
     "parsleyjs": "^2.9.2",
     "perfect-scrollbar": "^1.5.6",
