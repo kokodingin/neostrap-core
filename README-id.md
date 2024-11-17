@@ -1,3 +1,9 @@
+<div align="center" style="margin-bottom: 1rem">
+  <a href="./README.md">Bahasa Inggris</a>
+  <span style="margin-left: .5rem;margin-right: .5rem">•</span>
+  <a href="./README-id.md"><strong>Indonesian</strong></a>
+</div>
+
 <h1 align="center">NeoStrap Template</h1>
 
 ![Screenshot](./screenshot.png)
