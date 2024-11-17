@@ -97,33 +97,12 @@ const prepareTemplateVariables = (
  * Configuration for vendor modules to be copied
  */
 const VENDOR_MODULES: ModuleCopyConfig = {
-  'rater-js': false,
   apexcharts: true,
   'perfect-scrollbar': true,
-  flatpickr: true,
-  filepond: true,
-  'filepond-plugin-file-validate-size': true,
-  'filepond-plugin-file-validate-type': true,
-  'filepond-plugin-image-crop': true,
-  'filepond-plugin-image-exif-orientation': true,
-  'filepond-plugin-image-filter': true,
-  'filepond-plugin-image-preview': true,
-  'filepond-plugin-image-resize': true,
-  'feather-icons': true,
-  dragula: true,
-  dayjs: false,
-  'chart.js': true,
-  'choices.js': false,
-  parsleyjs: true,
   sweetalert2: true,
-  summernote: true,
-  quill: true,
-  tinymce: false,
   'toastify-js': false,
   'datatables.net': false,
   'datatables.net-bs5': false,
-  'simple-datatables': true,
-  jsvectormap: true,
 };
 
 /**

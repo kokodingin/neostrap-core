@@ -7,6 +7,7 @@
     "dev": "vite",
     "build:local": "vite build && npm run prettify",
     "build": "vite build",
+    "build:prod": "vite build && npm run zip",
     "serve": "vite preview",
     "zip": "bestzip neostrap.zip dist/*",
     "prettify": "prettier --ignore-path .gitignore --write 'dist/*.html'"
