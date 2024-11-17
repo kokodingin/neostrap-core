@@ -14,48 +14,34 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
+          <a href="#" class="nav-link dropdown-toggle" id="donasiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Bantu Donasi Donk!
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" aria-labelledby="donasiDropdown">
             <li>
-              <a class="dropdown-item" href="#">Action</a>
+              <a href="https://saweria.co/catatancakadi" class="justify-content-between dropdown-item d-flex gap-2 align-items-center" target="_blank">
+                <span>Saweria</span>
+                <i class="fas fa-external-link fa-fw"></i>
+              </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Another action</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a href="https://trakteer.id/cakadi190" class="justify-content-between dropdown-item d-flex gap-2 align-items-center" target="_blank">
+                <span>Trakteer</span>
+                <i class="fas fa-external-link fa-fw"></i>
+              </a>
             </li>
           </ul>
         </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a href="https://github.com/kokodingin/neostrap-core" class="nav-link" target="_blank">
+            <i class="fab fa-github fa-fw"></i>
+            GitHub
+          </a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

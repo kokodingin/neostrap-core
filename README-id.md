@@ -2,7 +2,8 @@
 
 ![Screenshot](./screenshot.png)
 
-<p align="center">The latest Bootstrap 5 template with a NeoBRUTALISM style that is simple, bold, and fierce!</p>
+<p align="center">Template Bootstrap 5 terbaru dengan gaya NeoBRUTALISM yang sangat simple, brutal dan ganas!</p>
+
 
 <div align="center">
 
@@ -13,7 +14,7 @@
   
   <hr />
 
-  <p>This project is supported and sponsored by:</p>
+  <p>Proyek ini dibantu dan disponsori oleh:</p>
 
   <div style="text-align: center">
     <a href="https://www.facebook.com/groups/programmerhandal/">
@@ -24,15 +25,15 @@
   <p align="center">
     <a href="http://neostrap.kokodingin.id">Demo Page</a>
     <span style="margin-left: .5rem;margin-right: .5rem">•</span>
-    <a href="./CONTRIBUTE.md">READ THE CONTRIBUTION GUIDE!</a>
+    <a href="./CONTRIBUTE.md">BACA PANDUAN PENGEMBANGAN!</a>
     <span style="margin-left: .5rem;margin-right: .5rem">•</span>
-    <a href="./LICENSE">LICENSE</a>
+    <a href="./LICENSE">LISENSI</a>
   </p>
 </div>
 
 ## ⚡ Quick Start
 
-1. Download or clone the repository
+1. Download atau clone repository
 ```bash
 git clone https://github.com/kokodingin/neostrap-core.git
 ```
@@ -42,12 +43,12 @@ git clone https://github.com/kokodingin/neostrap-core.git
 npm install
 ```
 
-3. Run the development server
+3. Jalankan development server
 ```bash
 npm run dev
 ```
 
-### 📁 Folder Structure
+### 📁 Struktur Folder
 ```
 neostrap/
 |   .editorconfig
@@ -140,7 +141,7 @@ neostrap/
 
 ## 📁 Included Features
 - ✅ Vite + TypeScript setup
-- ✅ Integrated Bootstrap 5
+- ✅ Bootstrap 5 terintegrasi
 - ✅ SCSS/SASS support
 - ✅ NeoBrutalism components & styles
 - ✅ Hot reload
@@ -152,4 +153,4 @@ npm run build
 ```
 
 ## 💻 Development
-Start editing files in the `src/` folder according to your needs. All Bootstrap components are available and ready for use.
+Mulai edit file di folder `src/` sesuai kebutuhan Anda. Semua komponen Bootstrap sudah tersedia dan dapat langsung digunakan.
