@@ -7,3 +7,6 @@
  * 
  * Happy Coding!
  */
+(() => {
+  // Place your code here
+})()

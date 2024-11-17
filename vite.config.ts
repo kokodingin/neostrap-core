@@ -10,7 +10,6 @@ import { fileURLToPath } from 'url';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
 import fs from 'fs';
-import legacy from '@vitejs/plugin-legacy'
 import nunjucks from 'vite-plugin-nunjucks';
 import path, { extname, resolve } from 'path';
 
@@ -56,6 +55,8 @@ const getHtmlFiles = (): Record<string, string> => {
 
   return htmlFiles;
 };
+
+console.log(getHtmlFiles())
 
 /**
  * Prepares template variables for Nunjucks rendering
@@ -109,7 +110,7 @@ const VENDOR_MODULES: ModuleCopyConfig = {
  * Prepares module copy configurations for the build process
  * @returns {Array<{src: string; dest: string; rename: string}>} Array of copy configurations
  */
-const prepareModuleCopyConfig = () => {
+const prepareModuleCopyConfig = (): Array<{ src: string; dest: string; rename: string; }> => {
   return Object.entries(VENDOR_MODULES).map(([moduleName, hasDistFolder]) => ({
     src: normalizePath(
       resolve(
@@ -161,11 +162,6 @@ const config: UserConfigExport = defineConfig((env) => ({
     cors: true,
   },
   plugins: [
-    // legacy({
-    //   targets: ['defaults', 'not IE 11'],
-    //   renderLegacyChunks: true,
-    //   modernPolyfills: true,
-    // }),
     ViteMinifyPlugin({
       html5: true,
       minifyCSS: true,
@@ -196,7 +192,7 @@ const config: UserConfigExport = defineConfig((env) => ({
       targets: [
         {
           src: normalizePath(resolve(CURRENT_DIRNAME, './src/assets/static')),
-          dest: 'assets',
+          dest: 'assets/static',
         },
         {
           src: normalizePath(
@@ -226,36 +222,28 @@ const config: UserConfigExport = defineConfig((env) => ({
   build: {
     emptyOutDir: true,
     manifest: true,
+    copyPublicDir: true,
     minify: 'esbuild',
+    chunkSizeWarningLimit: 2048,
     targets: 'es2015',
     outDir: resolve(CURRENT_DIRNAME, 'dist'),
     rollupOptions: {
       input: getHtmlFiles(),
       output: {
         format: 'es',
-        entryFileNames: 'assets/bundled/js/[name].js',
-        chunkFileNames: 'assets/bundled/js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const fileName = assetInfo.name || 'default';
-          const extension = extname(fileName).slice(1);
+        
+        entryFileNames: `assets/compiled/js/[name].js`,
+        chunkFileNames: `assets/compiled/js/[name].js`,
 
-          let assetFolder = extension ? `${extension}/` : '';
+        assetFileNames: (a) => {
+          const extname = a.name?.split('.')?.pop();
+          let folder = extname ? `${extname}/` : '';
 
-          if (['woff', 'woff2', 'ttf'].includes(extension)) {
-            assetFolder = 'fonts/';
+          if (['woff', 'woff2', 'ttf'].includes(String(extname))) {
+            folder = 'fonts/'
           }
 
-          return `assets/bundled/${assetFolder}[name][extname]`;
-        },
-        manualChunks: {
-          vendor: [
-            'bootstrap',
-            'perfect-scrollbar',
-            '@fortawesome/fontawesome-free',
-            'filepond',
-            'apexcharts',
-            'chart.js'
-          ]
+          return `assets/compiled/${folder}[name][extname]`
         }
       },
     },
