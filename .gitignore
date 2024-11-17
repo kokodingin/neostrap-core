@@ -11,4 +11,6 @@ dist.zip
 !.yarn/plugins
 .pnp.*
 dist
-template.zip
+*.zip
+**/*.zip
+/neostrap.zip
