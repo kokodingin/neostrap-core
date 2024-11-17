@@ -22,6 +22,7 @@ Semua perubahan harus dilakukan di file sumber yang terletak di folder `src` dan
 - Tambahkan gambar jika diperlukan saat menambahkan fitur.
 - Tambahkan package baru jika diperlukan untuk fitur Anda.
 - Sertakan aset tambahan jika diperlukan.
+- ⚠️ Tambahkan [docblock](https://medium.com/kode-dan-kodean/latihan-membuat-dokumentasi-di-dalam-kode-dengan-jetbrains-ide-478b382c3d03) supaya jelas ketika akan dikembangkan oleh orang lain!
 - ❌ Jangan hapus atau mengubah struktur folder dasar tanpa konfirmasi dengan pemilik atau admin!
 - ❌ Jangan hapus file inti! Jika Anda perlu menambahkan ke file inti, buat file terpisah dan impor ke `main.ts` atau `neostrap.scss` sebelum melakukan push.
 
