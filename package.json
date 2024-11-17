@@ -1,6 +1,6 @@
 {
   "name": "neostrap",
-  "version": "0.0.1-beta.20241117",
+  "version": "0.0.1-dev.20241117",
   "description": "Template Bootstrap 5 terbaru dengan gaya NeoBRUTALISM yang sangat simple, brutal dan ganas!",
   "main": "src/main.ts",
   "scripts": {
