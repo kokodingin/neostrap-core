@@ -62,6 +62,10 @@
   }
 }
 
+@mixin raised-single {
+  box-shadow: var(--#{$theme-prefix}brutal-shadow-sm) var(--#{$theme-prefix}brutal-shadow-sm) 0 var(--#{$theme-prefix}brutal-border-color);
+}
+
 @mixin static-raised-variant {
   box-shadow: var(--#{$theme-prefix}brutal-shadow-sm) var(--#{$theme-prefix}brutal-shadow-sm) 0 var(--#{$theme-prefix}brutal-border-color);
 
