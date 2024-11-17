@@ -142,7 +142,7 @@ const initializeScrollBehavior = ({
 };
 
 /**
- * Arrange and gather core code into 1 function to init
+ * Arrange and gather all core code into 1 function to init
  * 
  * @returns {void}
  */
