@@ -47,11 +47,17 @@ git clone https://github.com/kokodingin/neostrap-core.git
 2. Install dependencies
 ```bash
 npm install
+yarn install
+pnpm install
+bun install
 ```
 
 3. Run the development server
 ```bash
 npm run dev
+yarn dev
+pnpm run dev
+bun run dev
 ```
 
 ### 📁 Folder Structure
@@ -128,7 +134,6 @@ neostrap/
 |   |               all.js
 |   |
 |   \---layouts
-|       |   master.html
 |       |   single.html
 |       |
 |       \---partials
