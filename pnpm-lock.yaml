@@ -107,6 +107,12 @@ importers:
       rater-js:
         specifier: ^1.0.1
         version: 1.0.1
+      remixicon:
+        specifier: ^4.5.0
+        version: 4.5.0
+      remixicons:
+        specifier: ^1.0.0
+        version: 1.0.0
       simple-datatables:
         specifier: ^9.2.1
         version: 9.2.1
@@ -2029,6 +2035,12 @@ packages:
   relateurl@0.2.7:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
+
+  remixicon@4.5.0:
+    resolution: {integrity: sha512-IP/wNQGG3JCigaeFF3DERSTqMIZBlNu1yu8clNGB7wFe7ZN/ueKMplFHL5uEbnGpCzqfY6MlxIYn2vRzub+5cQ==}
+
+  remixicons@1.0.0:
+    resolution: {integrity: sha512-vUdVVlnSgMR7FK1nMEsr5yxCv/bXPHZT6ZBitlC3OdtjzXfSTI0efFC/kMgW8LACATi6bJRNgDonAS/rRjh2qA==}
 
   resolve@1.22.8:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
@@ -4109,6 +4121,10 @@ snapshots:
       jsesc: 3.0.2
 
   relateurl@0.2.7: {}
+
+  remixicon@4.5.0: {}
+
+  remixicons@1.0.0: {}
 
   resolve@1.22.8:
     dependencies:

@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import * as bootstrap from 'bootstrap';
 
 declare global {

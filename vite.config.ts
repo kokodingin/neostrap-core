@@ -97,10 +97,7 @@ const prepareTemplateVariables = (
  * Configuration for vendor modules to be copied
  */
 const VENDOR_MODULES: ModuleCopyConfig = {
-  '@icon/dripicons': false,
-  '@fortawesome/fontawesome-free': false,
   'rater-js': false,
-  'bootstrap-icons': false,
   apexcharts: true,
   'perfect-scrollbar': true,
   flatpickr: true,

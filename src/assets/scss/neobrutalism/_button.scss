@@ -1,7 +1,11 @@
 .btn {
   // Button Regular -------------------------------
   border-color: $dark;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
   transition: all 0.1s;
+  max-width: fit-content;
 
   &-check:checked,
   &-check:hover,
