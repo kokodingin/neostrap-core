@@ -134,7 +134,6 @@ neostrap/
 |   |               all.js
 |   |
 |   \---layouts
-|       |   master.html
 |       |   single.html
 |       |
 |       \---partials
