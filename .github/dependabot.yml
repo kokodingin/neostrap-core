@@ -1,0 +1,51 @@
+# Konfigurasi Dependabot untuk Vite + TypeScript + Bootstrap
+version: 2
+updates:
+  # Konfigurasi untuk npm (mencakup Vite, TypeScript, dan Bootstrap)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Jakarta"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "npm"
+    versioning-strategy: "auto"
+    target-branch: "main"
+    # Mengatur dependency groups untuk update yang lebih terorganisir
+    groups:
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+      bootstrap:
+        patterns:
+          - "bootstrap"
+          - "@popperjs/*"
+    # Mengabaikan beberapa dependencies jika diperlukan
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+    commit-message:
+      prefix: "deps"
+      prefix-development: "devDeps"
+      include: "scope"
+
+  # Konfigurasi untuk GitHub Actions (jika menggunakan workflow)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Jakarta"
+    labels:
+      - "dependencies"
+      - "github-actions"
