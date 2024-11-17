@@ -169,33 +169,6 @@ const INLINE_BUILD_CONFIG: InlineConfig = {
   },
 };
 
-/**
- * Creates a Vite plugin to handle HTML attribute cleaning
- * @param {string} buildMode - Current build mode
- * @returns {Plugin} Configured Vite plugin
- */
-const createAttributeCleanerPlugin = (buildMode: string): Plugin => {
-  return {
-    name: 'attribute-cleaner',
-    transformIndexHtml(html: string) {
-      const attributeReplacements = [
-        { 'type="module"': '' },
-        { 'import.meta.url': '' },
-        { crossorigin: '' },
-      ];
-
-      const cleanHtml = attributeReplacements.reduce((result, replacement) => {
-        const [[oldValue, newValue]] = Object.entries(replacement);
-        return result.split(oldValue).join(newValue);
-      }, html);
-
-      return buildMode !== 'development' ?
-        cleanHtml
-        : html;
-    },
-  };
-};
-
 build(INLINE_BUILD_CONFIG);
 
 /**
@@ -212,16 +185,20 @@ const config: UserConfigExport = defineConfig((env) => ({
     cors: true,
   },
   plugins: [
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-      renderLegacyChunks: true,
-      modernPolyfills: true,
-    }),
-    // createAttributeCleanerPlugin(env.mode),
+    // legacy({
+    //   targets: ['defaults', 'not IE 11'],
+    //   renderLegacyChunks: true,
+    //   modernPolyfills: true,
+    // }),
     ViteMinifyPlugin({
       html5: true,
       minifyCSS: true,
-      minifyJS: true,
+      minifyJS: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
+      },
       noNewlinesBeforeTagClose: true,
       keepClosingSlash: true,
     }),
@@ -273,7 +250,8 @@ const config: UserConfigExport = defineConfig((env) => ({
   build: {
     emptyOutDir: true,
     manifest: true,
-    target: 'es2015',
+    minify: 'esbuild',
+    targets: 'es2015',
     outDir: resolve(CURRENT_DIRNAME, 'dist'),
     rollupOptions: {
       input: getHtmlFiles(),

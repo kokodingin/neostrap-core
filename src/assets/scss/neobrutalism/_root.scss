@@ -1,0 +1,27 @@
+$theme-prefix: $prefix;
+$base-size: (
+  xs: 0.125rem,
+  sm: 0.25rem,
+  md: 0.325rem,
+  lg: 0.5rem,
+  xl: 0.625rem,
+  2xl: 0.825rem,
+) !default;
+
+:root {
+  // Shadow Sizes
+  @each $size, $value in $base-size {
+    --#{$theme-prefix}brutal-shadow-#{$size}: #{$value};
+  }
+  
+  // Default shadow offset
+  --#{$theme-prefix}brutal-shadow-default: var(--#{$theme-prefix}brutal-shadow-md);
+  
+  // Border
+  --#{$theme-prefix}brutal-border-width: 2px;
+  --#{$theme-prefix}brutal-border-style: solid;
+  --#{$theme-prefix}brutal-border-color: #{$dark};
+  
+  // Transitions
+  --#{$theme-prefix}brutal-transition: all .1s ease-in-out;
+}

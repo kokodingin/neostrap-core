@@ -1,0 +1,13 @@
+.alert {
+  @each $bg, $value in $theme-colors {
+    &-#{$bg} {
+      border-color: if($bg == 'light', $dark, $value);
+      color: if($bg == 'light', $dark, darken($value, 15%));
+
+      &-neoraised {
+        --#{$theme-prefix}brutal-border-color: #{if($bg == 'light', $dark, $value)};
+        @include static-raised-variant;
+      }
+    }
+  }
+}
