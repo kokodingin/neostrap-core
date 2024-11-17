@@ -24,6 +24,10 @@
 
   <p align="center">
     <a href="http://neostrap.kokodingin.id">Demo Page</a>
+    <span style="margin-left: .5rem;margin-right: .5rem">•</span>
+    <a href="./CONTRIBUTE.md">BACA PANDUAN PENGEMBANGAN!</a>
+    <span style="margin-left: .5rem;margin-right: .5rem">•</span>
+    <a href="./LICENSE">LISENSI</a>
   </p>
 </div>
 
