@@ -2,3 +2,945 @@
 
 {% set filename = 'docs-component-index.html' %}
 {% extends 'src/layouts/single.html' %}
+
+{% block styles %}
+  <style>
+    .bs-component {
+      margin-bottom: 1rem;
+    }
+    .bs-docs-group {
+      margin-bottom: 2rem;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <main class="my-5 pt-5">
+    <!-- header.container -->
+    <header class="container">
+      <div class="row py=lg-5 py-0 gy-5 gy-lg-0 align-items-center mt-lg-5">
+        <div class="col-md-7 text-center text-lg-start order-2 order-lg-1">
+          <h1 class="mb-1">NeoStrap Template</h1>
+          <h2 class="h5 mb-2">Oleh KoDinus Groups</h2>
+          <p>Template admin dan landing page bootstrap bergaya NeoBrutalism Design yang mirip dengan <a target="_blank" href="https://saweria.co" rel="nofollow noreferrer">saweria.co</a> dengan desain minimalis, brutal dan ganas. Proyek ini didukung oleh <a href="https://www.facebook.com/groups/programmerhandal/">Ingin Menjadi Programmer Handal Namun Enggan Ngoding (IMPHNEN)</a>.</p>
+
+          <a href="#" data-scroll="#navbars" class="btn mx-auto mx-lg-0 btn-neoraised btn-primary">
+            <span>Lihat Komponen</span>
+            <i class="fas fa-fw fa-arrow-down"></i>
+          </a>
+
+          <div class="alert d-flex gap-3 alert-warning alert-warning-neoraised mt-4">
+            <i class="fas fa-2x fa-fw fa-exclamation-triangle"></i>
+            <div>
+              <h3 class="h4">Mohon diperhatikan</h3>
+              <p class="mb-2">Komponen yang dibuat ini masih dalam tahap pengembangan untuk <em>base component</em> dan <em>template</em>. Untuk bagian admin akan hadir dalam waktu dekat oleh para kontributor.</p>
+              <p class="mb-2">Mohon bantuannya untuk donasi berbentuk uang dan atau dengan kontribusinya terhadap template ini supaya makin banyak orang yang bisa memakai template ini.</p>
+
+              <div class="d-flex flex-column gap-2">
+                <p class="m-0">Kamu bisa berdonasi ke:</p>
+                <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                  <a target="_blank" href="https://trakteer.id/cakadi190/">trakteer.id</a>
+                  <a target="_blank" href="https://saweria.co/catatancakadi">saweria.co</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 order-1 order-lg-2">
+          <div class="card card-neoraised-lg overflow-hidden">
+            <img src="/assets/static/images/screenshot.png"  alt="NeoStrap Preview"/>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- /header.container -->
+
+    <!-- .container -->
+    <div class="container pt-5">
+      <!-- .bs-docs-group -->
+      <div class="bs-docs-group">
+        <h3 class="h2">Navbar Plain, Bordered dan Raised</h3>
+        <p class="pb-3">Untuk komponen navigasi.</p>
+
+        <div class="row">
+          <div class="col-lg-12 mb-3">
+            <div class="page-header">
+              <h4 id="navbars">Navbar Plain</h4>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+          </div>
+          <div class="col-lg-12 mb-3">
+            <div class="page-header">
+              <h4>Navbar Raised Bottom</h4>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised-bottom navbar-expand-lg bg-primary navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised-bottom navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised-bottom navbar-expand-lg bg-light" data-bs-theme="light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised-bottom navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+          </div>
+          <div class="col-lg-12 mb-3">
+            <div class="page-header">
+              <h4 id="navbars">Navbar Raised</h4>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised navbar-expand-lg bg-primary navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised navbar-expand-lg bg-light" data-bs-theme="light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+            <div class="bs-component">
+              <nav class="navbar navbar-neoraised navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home
+                          <span class="visually-hidden">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-sm-2" type="search" placeholder="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /.bs-docs-group -->
+
+      <!-- .bs-docs-group -->
+      <div class="bs-docs-group">
+        <h3 class="h2">Tombol Plain, Bordered dan Raised</h3>
+        <p class="pb-3">Untuk komponen tombol interaktif.</p>
+      </div>
+      <!-- /.bs-docs-group -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- .bs-component -->
+          <div class="bs-component">
+            <h4>Tombol Polos dan Padat</h4>
+            <div class="d-flex gap-2 flex-wrap">
+              {% for classes in bootstrapClasses %}
+                <button class="btn btn-{{ classes }}">{{ classes | capitalize }}</button>
+                <button class="btn btn-outline-{{ classes }}">{{ classes | capitalize }}</button>
+              {% endfor %}
+            </div>
+          </div>
+          <!-- /.bs-component -->
+
+          <!-- .bs-component -->
+          <div class="bs-component">
+            <h4>Tombol Raised</h4>
+            <div class="d-flex gap-3 flex-wrap">
+              {% for classes in bootstrapClasses %}
+                <button class="btn btn-neoraised btn-{{ classes }}">{{ classes | capitalize }}</button>
+                <button class="btn btn-neoraised btn-outline-{{ classes }}">{{ classes | capitalize }}</button>
+              {% endfor %}
+            </div>
+          </div>
+          <!-- /.bs-component -->
+        </div>
+        <div class="col-md-6">
+          <div class="bs-component">
+            <h4>Tombol Block</h4>
+
+            <div class="d-grid gap-2 mb-3">
+              <button class="btn btn-lg btn-primary" type="button">Block button</button>
+              <button class="btn btn-lg btn-primary" type="button">Block button</button>
+            </div>
+
+            <div class="d-grid gap-3">
+              <button class="btn btn-lg btn-neoraised btn-primary" type="button">Block button</button>
+              <button class="btn btn-lg btn-neoraised btn-primary" type="button">Block button</button>
+            </div>
+          </div>
+          <div class="bs-component">
+            <h4>Tombol Grup</h4>
+
+            <div class="d-flex gap-2 mb-3 flex-wrap">
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-primary">Primary</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-success">Success</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-info">Info</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-danger">Danger</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop4" style="">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2 mb-4 flex-wrap">
+              <div class="btn-group btn-group-neoraised" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-primary">Primary</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group btn-group-neoraised" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-success">Success</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group btn-group-neoraised" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-info">Info</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-group btn-group-neoraised" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-danger">Danger</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop4" style="">
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                    <a class="dropdown-item" href="#">Dropdown link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck1-1" checked="" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck1-1">Checkbox 1</label>
+              <input type="checkbox" class="btn-check" id="btncheck2-1" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck2-1">Checkbox 2</label>
+              <input type="checkbox" class="btn-check" id="btncheck3-1" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck3-1">Checkbox 3</label>
+            </div>
+
+            <div class="btn-group btn-group-neoraised mb-3" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck1-2" checked="" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck1-2">Checkbox 1</label>
+              <input type="checkbox" class="btn-check" id="btncheck2-2" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck2-2">Checkbox 2</label>
+              <input type="bootstrapClassesExcludeLinkx" class="btn-check" id="btncheck3-2" autocomplete="off">
+              <label class="btn btn-primary" for="btncheck3-2">Checkbox 3</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bs-docs-section py-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h3 class="h2" id="typography">Typography</h3>
+              <p>Untuk demo tampilan dari teks dan tipografi atau penulisannya.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Headings -->
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+              <h3>
+                Heading
+                <small class="text-body-secondary">with faded secondary text</small>
+              </h3>
+              <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <h2>Example body text</h2>
+              <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+              <p>
+                <small>This line of text is meant to be treated as fine print.</small>
+              </p>
+              <p>The following is <strong>rendered as bold text</strong>.</p>
+              <p>The following is <em>rendered as italicized text</em>.</p>
+              <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <h2>Emphasis classes</h2>
+              <p class="text-primary">.text-primary</p>
+              <p class="text-primary-emphasis">.text-primary-emphasis</p>
+              <p class="text-secondary">.text-secondary</p>
+              <p class="text-secondary-emphasis">.text-secondary-emphasis</p>
+              <p class="text-success">.text-success</p>
+              <p class="text-success-emphasis">.text-success-emphasis</p>
+              <p class="text-danger">.text-danger</p>
+              <p class="text-danger-emphasis">.text-danger-emphasis</p>
+              <p class="text-warning">.text-warning</p>
+              <p class="text-warning-emphasis">.text-warning-emphasis</p>
+              <p class="text-info">.text-info</p>
+              <p class="text-info">.text-info-emphasis</p>
+              <p class="text-light">.text-light</p>
+              <p class="text-light">.text-light-emphasis</p>
+              <p class="text-dark">.text-dark</p>
+              <p class="text-dark">.text-dark-emphasis</p>
+              <p class="text-body">.text-body</p>
+              <p class="text-body">.text-body-emphasis</p>
+              <p class="text-body-secondary">.text-body-secondary</p>
+              <p class="text-body-tertiary">.text-body-tertiary</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blockquotes -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 id="type-blockquotes">Blockquotes</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <figure>
+                <blockquote class="blockquote">
+                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                  Someone famous in <cite title="Source Title">Source Title</cite>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <figure class="text-center">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                  Someone famous in <cite title="Source Title">Source Title</cite>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <figure class="text-end">
+                <blockquote class="blockquote">
+                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                  Someone famous in <cite title="Source Title">Source Title</cite>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bs-docs-section py-4">
+        <h3>Alert</h3>
+        <p>A pretty helpful component to show emphasized information to the user.</p>
+
+        {% set bootstrapClassesExcludeLink = bootstrapClasses | reject('equalto', 'link') %}
+        {% set lastOfBootstrapClassesExcludeLink = bootstrapClasses | last %}
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+          <symbol id="check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </symbol>
+          <symbol id="info-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </symbol>
+          <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </symbol>
+        </svg>
+
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <div class="card mb-3 card-neoraised overflow-hidden">
+              <div class="card-body">
+                <h4>Plain</h4>
+
+                {% for classes in bootstrapClassesExcludeLink %}
+                  <div class="alert alert-{{ classes }}">{{ classes | capitalize }}</div>
+                  <div class="alert alert-{{ classes }} alert-dismissible fade show">
+                    {{ classes | capitalize }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Raised</h4>
+
+            {% for classes in bootstrapClassesExcludeLink %}
+              <div class="alert alert-{{ classes }}-neoraised alert-{{ classes }}">{{ classes | capitalize }}</div>
+              <div class="alert alert-{{ classes }}-neoraised alert-{{ classes }} alert-dismissible fade show">
+                {{ classes | capitalize }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+  </main>
+{% endblock %}

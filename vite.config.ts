@@ -24,6 +24,13 @@ const CURRENT_DIRNAME = path.dirname(CURRENT_FILENAME);
 const SOURCE_ROOT = resolve(CURRENT_DIRNAME, 'src');
 
 /**
+ * Interface for module copy configuration
+ */
+interface ModuleCopyConfig {
+  [key: string]: boolean;
+}
+
+/**
  * Interface for template variables
  */
 interface TemplateVariables {
@@ -36,6 +43,8 @@ interface TemplateVariables {
 /**
  * Retrieves HTML files from the source directory
  * @returns {Record<string, string>} Object containing filename-path pairs
+ * @description Scans the source directory for HTML files and creates a mapping of
+ * filenames (without extension) to their full file paths
  */
 const getHtmlFiles = (): Record<string, string> => {
   const htmlFiles: Record<string, string> = {};
@@ -78,13 +87,68 @@ const prepareTemplateVariables = (
         'info',
         'light',
         'dark',
-        'link',
-      ],
+        'link'
+      ]
     };
   });
 
   return templateVars;
 };
+
+/**
+ * Configuration for vendor modules to be copied
+ */
+const VENDOR_MODULES: ModuleCopyConfig = {
+  apexcharts: true,
+  'perfect-scrollbar': true,
+  sweetalert2: true,
+  'toastify-js': false,
+  'datatables.net': false,
+  'datatables.net-bs5': false,
+};
+
+/**
+ * Prepares module copy configurations for the build process
+ * @returns {Array<{src: string; dest: string; rename: string}>} Array of copy configurations
+ */
+const prepareModuleCopyConfig = (): Array<{ src: string; dest: string; rename: string; }> => {
+  return Object.entries(VENDOR_MODULES).map(([moduleName, hasDistFolder]) => ({
+    src: normalizePath(
+      resolve(
+        CURRENT_DIRNAME,
+        `./node_modules/${moduleName}${hasDistFolder ? '/dist' : ''}`,
+      ),
+    ),
+    dest: 'assets/vendors',
+    rename: moduleName,
+  }));
+};
+
+/**
+ * Inline build configuration for application bundling
+ */
+const INLINE_BUILD_CONFIG: InlineConfig = {
+  configFile: false,
+  build: {
+    emptyOutDir: false,
+    outDir: resolve(CURRENT_DIRNAME, 'dist/assets/bundled/js'),
+    lib: {
+      name: 'app',
+      formats: ['iife'],
+      fileName: 'app',
+      entry: './src/assets/js/neostrap.ts',
+    },
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js',
+        format: 'iife',
+      },
+    },
+  },
+};
+
+build(INLINE_BUILD_CONFIG);
+
 
 /**
  * Minifies assets (JS, CSS, SVG) in the given directory
@@ -110,7 +174,7 @@ const minifyAssets = async (dir: string) => {
       fs.writeFileSync(filePath, minified.styles, 'utf-8');
     } else if (ext === '.svg') {
       const svg = fs.readFileSync(filePath, 'utf-8');
-      const result = SVGO.optimize(svg);
+      const result = await SVGO.optimize(svg);
       fs.writeFileSync(filePath, result.data, 'utf-8');
     }
   }
@@ -120,93 +184,106 @@ const minifyAssets = async (dir: string) => {
 /**
  * Main Vite configuration
  */
-const config: UserConfigExport = defineConfig((env) => {
-  const buildMode = env.mode;
-
-  return {
-    publicDir: 'static',
-    base: buildMode === 'production' ? './' : '/',
-    root: SOURCE_ROOT,
-    server: {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      cors: true,
+const config: UserConfigExport = defineConfig((env) => ({
+  publicDir: 'static',
+  base: env.mode === 'production' ? './' : '/',
+  root: SOURCE_ROOT,
+  server: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
     },
-    plugins: [
-      ViteMinifyPlugin({
-        html5: true,
-        minifyCSS: true,
-        minifyJS: {
-          compress: {
-            drop_console: true,
-            drop_debugger: true,
-          },
-        },
-        noNewlinesBeforeTagClose: true,
-        keepClosingSlash: true,
-      }),
-      nunjucks({
-        templatesDir: SOURCE_ROOT,
-        variables: prepareTemplateVariables(buildMode),
-        nunjucksEnvironment: {
-          filters: {
-            containString: (str: string, searchStr: string): boolean => {
-              return str.length > 0 && str.includes(searchStr);
-            },
-            startsWith: (str: string, prefix: string): boolean => {
-              return str.length > 0 && str.startsWith(prefix);
-            },
-          },
-        },
-      }),
-      viteStaticCopy({
-        targets: [
-          {
-            src: normalizePath(resolve(CURRENT_DIRNAME, './src/assets/static')),
-            dest: 'assets/static',
-          },
-        ],
-      }),
-    ],
-    resolve: {
-      alias: {
-        '@': normalizePath(resolve(CURRENT_DIRNAME, 'src')),
-        '~bootstrap': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap'),
-        '~bootstrap-icons': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap-icons'),
+    cors: true,
+  },
+  plugins: [
+    ViteMinifyPlugin({
+      html5: true,
+      minifyCSS: true,
+      minifyJS: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true
+        }
       },
-    },
-    build: {
-      emptyOutDir: true,
-      manifest: true,
-      copyPublicDir: true,
-      minify: 'esbuild',
-      chunkSizeWarningLimit: 2048,
-      targets: 'es2015',
-      outDir: resolve(CURRENT_DIRNAME, 'dist'),
-      rollupOptions: {
-        input: getHtmlFiles(),
-        output: {
-          format: 'es',
-          entryFileNames: `assets/compiled/js/[name].js`,
-          chunkFileNames: `assets/compiled/js/[name].js`,
-          assetFileNames: ({ names }) => {
-            const extname = names?.[0]?.split('.')?.pop();
-            let folder = extname ? `${extname}/` : '';
-
-            if (['woff', 'woff2', 'ttf'].includes(String(extname))) {
-              folder = 'fonts/';
-            }
-
-            return `assets/compiled/${folder}[name][extname]`;
+      noNewlinesBeforeTagClose: true,
+      keepClosingSlash: true,
+    }),
+    nunjucks({
+      templatesDir: SOURCE_ROOT,
+      variables: prepareTemplateVariables(env.mode),
+      nunjucksEnvironment: {
+        filters: {
+          containString: (str: string, searchStr: string): boolean => {
+            return str.length > 0 && str.includes(searchStr);
+          },
+          startsWith: (str: string, prefix: string): boolean => {
+            return str.length > 0 && str.startsWith(prefix);
           },
         },
+      },
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: normalizePath(resolve(CURRENT_DIRNAME, './src/assets/static')),
+          dest: 'assets',
+        },
+        {
+          src: normalizePath(
+            resolve(
+              CURRENT_DIRNAME,
+              './node_modules/bootstrap-icons/bootstrap-icons.svg',
+            ),
+          ),
+          dest: 'assets/static/images',
+        },
+        ...prepareModuleCopyConfig(),
+      ],
+      watch: {
+        reloadPageOnChange: true,
+      },
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': normalizePath(resolve(CURRENT_DIRNAME, 'src')),
+      '~bootstrap': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap'),
+      '~bootstrap-icons': resolve(CURRENT_DIRNAME, 'node_modules/bootstrap-icons'),
+      '~perfect-scrollbar': resolve(CURRENT_DIRNAME, 'node_modules/perfect-scrollbar'),
+      '~@fontsource': resolve(CURRENT_DIRNAME, 'node_modules/@fontsource'),
+    },
+  },
+  build: {
+    emptyOutDir: true,
+    manifest: true,
+    copyPublicDir: true,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 2048,
+    targets: 'es2015',
+    outDir: resolve(CURRENT_DIRNAME, 'dist'),
+    rollupOptions: {
+      input: getHtmlFiles(),
+      output: {
+        format: 'es',
+        
+        entryFileNames: `assets/compiled/js/[name].js`,
+        chunkFileNames: `assets/compiled/js/[name].js`,
+
+        assetFileNames: ({ names }) => {
+          const extname = names?.[0]?.split('.')?.pop();
+          let folder = extname ? `${extname}/` : '';
+
+          if (['woff', 'woff2', 'ttf'].includes(String(extname))) {
+            folder = 'fonts/'
+          }
+
+          return `assets/compiled/${folder}[name][extname]`
+        }
       },
     },
     buildEnd() {
-      minifyAssets(resolve(CURRENT_DIRNAME, 'dist/assets/vendors'));
+      minifyAssets(resolve(CURRENT_DIRNAME, 'dist/assets/static'));
     },
-  };
-});
+  },
+}));
 
 export default config;
