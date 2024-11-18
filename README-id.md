@@ -1,3 +1,5 @@
+[![ReadMeSupportPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-project.svg)](https://github.com/Safouene1/support-palestine-banner/Markdown-pages/Support.md)
+
 <div align="center" style="margin-bottom: 1rem">
   <a href="./README.md">Bahasa Inggris</a>
   <span style="margin-left: .5rem;margin-right: .5rem">•</span>
@@ -83,10 +85,12 @@ neostrap/
 |   |   404.html
 |   |   500.html
 |   |   503-cs.html
+|   |   docs-component-index.html
 |   |   index.html
 |   |
 |   +---assets
 |   |   +---js
+|   |   |       init-i18n.ts
 |   |   |       init-theme.ts
 |   |   |       neostrap.ts
 |   |   |
@@ -128,7 +132,7 @@ neostrap/
 |   |       |   mstile-310x310.png
 |   |       |   mstile-70x70.png
 |   |       |
-|   |       +---brands
+|   |       +---images
 |   |       |
 |   |       \---js
 |   |               all.js

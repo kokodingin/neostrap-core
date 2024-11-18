@@ -91,6 +91,24 @@
       font-family: 'JetBrains Mono', monospace;
     }
   </style>
+
+  <style>
+    .featured .icon {
+      margin-bottom: 1rem;
+    }
+
+    .featured .icon,
+    .featured .icon img {
+      display: flex;
+      width: 3rem;
+      height: 3rem;
+      background: rgba(var(--ns-dark-rgb), .025);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
@@ -209,11 +227,63 @@
         </div>
 
         <div class="row g-4">
-          {% set frameworksSet = [{}, {}, {}, {}, {}, {}] %}
+          {% set frameworksSet = [
+            {
+              icon: 'vitejs.svg',
+              title: 'ViteJS - Pembendel Berkas',
+              text: 'ViteJS adalah pembendel berkas yang menjadi satu paket yang padu dan ringkas. Solusi ini mendukung di semua platform peramban, memudahkan pengembangan dengan kecepatan tinggi.'
+            },
+            {
+              icon: 'apexchart.png',
+              title: 'ApexCharts - Pustaka Grafik',
+              text: 'ApexCharts adalah pustaka charting modern yang digunakan untuk membuat grafik interaktif. Sangat mudah digunakan untuk berbagai kebutuhan visualisasi data di aplikasi.'
+            },
+            {
+              icon: 'npm.svg',
+              title: 'NPM - Pengelola Paket',
+              text: 'NPM menyediakan akses ke ribuan paket open-source yang dapat digunakan untuk berbagai kebutuhan proyek pengembangan modern. Pengelolaan paket menjadi lebih mudah dan terstruktur.'
+            },
+            {
+              icon: 'bun.svg',
+              title: 'Bun - Runtime JavaScript',
+              text: 'Bun adalah runtime JavaScript yang cepat dengan built-in bundler, transpiler, serta alat pengelola paket. Proses instalasi menjadi sangat cepat dan efisien untuk semua proyek.'
+            },
+            {
+              icon: 'sass.svg',
+              title: 'Sass - Preprocessor CSS',
+              text: 'Sass adalah preprocessor CSS yang memperluas sintaks CSS dengan fitur-fitur seperti variabel dan mixin. Ini membantu mengelola dan membuat kode CSS yang lebih terstruktur dan efisien.'
+            },
+            {
+              icon: 'bootstrap.svg',
+              title: 'Bootstrap - Framework CSS',
+              text: 'Bootstrap adalah framework CSS paling populer yang memudahkan pengembangan desain antarmuka. Membantu dalam pembuatan layout responsif dan modern dengan komponen bawaan.'
+            },
+            {
+              icon: 'chartjs.svg',
+              title: 'Chart Js - Simple and Flexible Charting',
+              text: 'Chart Js adalah pustaka charting yang simple dan fleksibel yang dapat digunakan di semua halaman. Proses pemuatan pustaka ringan dan ideal untuk kebutuhan visualisasi data.'
+            },
+            {
+              icon: 'datatable.png',
+              title: 'Datatables - Pustaka Tabel Interaktif',
+              text: 'Datatables adalah pustaka tabel interaktif yang mudah digunakan. Cocok untuk semua halaman dan mendukung pemuatan data secara efisien untuk meningkatkan interaksi pengguna.'
+            },
+            {
+              icon: 'i18next.svg',
+              title: 'i18next - Dukungan Multibahasa',
+              text: 'i18next menyederhanakan proses penambahan dukungan multibahasa ke aplikasi web. Memberikan pengalaman pengguna yang dilokalkan dan fleksibel di berbagai platform.'
+            }
+        ] %}
           {% for item in frameworksSet %}
             <div class="col-md-4">
-              <div class="card card-neoraised overflow-hidden">
-                <div class="card-body"></div>
+              <div class="card featured card-neoraised overflow-hidden">
+                <div class="card-body">
+                  <div class="icon">
+                    <img src="/assets/static/images/icons/featured/{{ item.icon }}" alt="{{ item.title }}"/>
+                  </div>
+                  <strong class="mb-2 d-block">{{ item.title }}</strong>
+                  <p class="m-0 opacity-75">{{ item.text }}</p>
+                </div>
               </div>
             </div>
           {% endfor %}
