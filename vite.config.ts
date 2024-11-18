@@ -56,8 +56,6 @@ const getHtmlFiles = (): Record<string, string> => {
   return htmlFiles;
 };
 
-console.log(getHtmlFiles())
-
 /**
  * Prepares template variables for Nunjucks rendering
  * @param {string} buildMode - Current build mode ('development' or 'production')
