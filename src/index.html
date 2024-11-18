@@ -104,7 +104,7 @@
             <h2 class="h5 mb-2">Oleh KoDinus Groups</h2>
             <p>Template admin dan landing page bootstrap bergaya NeoBrutalism Design yang dengan desain minimalis, brutal dan ganas. Proyek ini didukung oleh <a href="https://www.facebook.com/groups/programmerhandal/">Ingin Menjadi Programmer Handal Namun Enggan Ngoding (IMPHNEN)</a>.</p>
 
-            <a href="./docs-component-index.html" class="btn mx-auto mx-lg-0 btn-neoraised btn-primary">
+            <a href="./docs-component-index.html" class="btn mx-auto mx-lg-0 btn-primary">
               <span>Lihat Komponen</span>
               <i class="fas fa-fw fa-arrow-right"></i>
             </a>
@@ -126,36 +126,36 @@
             <div class="tech-stack-grid-lg">
               {% set techItems = [
                 {
-                  src: "/assets/static/images/icons/html.png",
+                  src: "/assets/static/images/icons/techstack/html.png",
                   name: "HTML",
                   disabled: false,
                   href: './docs-component-index.html'
                 }, {
-                  src: "/assets/static/images/icons/laravel.svg",
+                  src: "/assets/static/images/icons/techstack/laravel.svg",
                   name: "Laravel",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/vue.svg",
+                  src: "/assets/static/images/icons/techstack/vue.svg",
                   name: "Vue.js",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/nextjs.svg",
+                  src: "/assets/static/images/icons/techstack/nextjs.svg",
                   name: "Next.js",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/inertia.png",
+                  src: "/assets/static/images/icons/techstack/inertia.png",
                   name: "Inertia Laravel",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/inertia.png",
+                  src: "/assets/static/images/icons/techstack/inertia.png",
                   name: "Inertia Adonis",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/react.png",
+                  src: "/assets/static/images/icons/techstack/react.png",
                   name: "React",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/figma.svg",
+                  src: "/assets/static/images/icons/techstack/figma.svg",
                   name: "Figma",
                   disabled: true
                 }
@@ -183,9 +183,38 @@
         </div>
 
         <div class="row g-3">
-          {% for i in [1,2,3,4,5,6] %}
+          {% for i in[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ] %}
             <div class="col-md-4">
               <div class="coming-soon-block projecting-16x9 rounded overflow-hidden"></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="need-space bg-primary-subtle">
+      <div class="container">
+        <div class="row pb-4">
+          <div class="col-md-6 mx-auto text-center">
+            <h3>Kerangka HTML dan Fitur Keren.</h3>
+            <p>NeoStrap memberikan banyak varian dan fitur keren untuk kamu yang suka dengan kustomisasi.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          {% set frameworksSet = [{}, {}, {}, {}, {}, {}] %}
+          {% for item in frameworksSet %}
+            <div class="col-md-4">
+              <div class="card card-neoraised overflow-hidden">
+                <div class="card-body"></div>
+              </div>
             </div>
           {% endfor %}
         </div>
