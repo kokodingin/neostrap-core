@@ -11,7 +11,10 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
 import fs from 'fs';
 import nunjucks from 'vite-plugin-nunjucks';
-import path, { extname, resolve } from 'path';
+import path, { resolve } from 'path';
+import { minify } from 'terser';
+import CleanCSS from 'clean-css';
+import SVGO from 'svgo';
 
 /**
  * Current file and directory path configuration
@@ -55,8 +58,6 @@ const getHtmlFiles = (): Record<string, string> => {
 
   return htmlFiles;
 };
-
-console.log(getHtmlFiles())
 
 /**
  * Prepares template variables for Nunjucks rendering
@@ -148,6 +149,38 @@ const INLINE_BUILD_CONFIG: InlineConfig = {
 
 build(INLINE_BUILD_CONFIG);
 
+
+/**
+ * Minifies assets (JS, CSS, SVG) in the given directory
+ * @param {string} dir - Directory path
+ */
+const minifyAssets = async (dir: string) => {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const ext = path.extname(file);
+
+    if (fs.statSync(filePath).isDirectory()) {
+      await minifyAssets(filePath); // Recursively minify subdirectories
+    } else if (ext === '.js') {
+      const code = fs.readFileSync(filePath, 'utf-8');
+      const result = await minify(code);
+      if (result.code) {
+        fs.writeFileSync(filePath, result.code, 'utf-8');
+      }
+    } else if (ext === '.css') {
+      const css = fs.readFileSync(filePath, 'utf-8');
+      const minified = new CleanCSS().minify(css);
+      fs.writeFileSync(filePath, minified.styles, 'utf-8');
+    } else if (ext === '.svg') {
+      const svg = fs.readFileSync(filePath, 'utf-8');
+      const result = await SVGO.optimize(svg);
+      fs.writeFileSync(filePath, result.data, 'utf-8');
+    }
+  }
+};
+
+
 /**
  * Main Vite configuration
  */
@@ -192,7 +225,7 @@ const config: UserConfigExport = defineConfig((env) => ({
       targets: [
         {
           src: normalizePath(resolve(CURRENT_DIRNAME, './src/assets/static')),
-          dest: 'assets/static',
+          dest: 'assets',
         },
         {
           src: normalizePath(
@@ -235,8 +268,8 @@ const config: UserConfigExport = defineConfig((env) => ({
         entryFileNames: `assets/compiled/js/[name].js`,
         chunkFileNames: `assets/compiled/js/[name].js`,
 
-        assetFileNames: (a) => {
-          const extname = a.name?.split('.')?.pop();
+        assetFileNames: ({ names }) => {
+          const extname = names?.[0]?.split('.')?.pop();
           let folder = extname ? `${extname}/` : '';
 
           if (['woff', 'woff2', 'ttf'].includes(String(extname))) {
@@ -246,6 +279,9 @@ const config: UserConfigExport = defineConfig((env) => ({
           return `assets/compiled/${folder}[name][extname]`
         }
       },
+    },
+    buildEnd() {
+      minifyAssets(resolve(CURRENT_DIRNAME, 'dist/assets/static'));
     },
   },
 }));
