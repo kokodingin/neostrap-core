@@ -1,37 +1,43 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>{{ title }} - {{ appName }}</title>
-    {% block linksheaderfirst %}{% endblock %} 
-    {% block scriptheaderfirst %}{% endblock %} 
-    
+    {% block linksheaderfirst %}{% endblock %}
+    {% block scriptheaderfirst %}{% endblock %}
+
     {% include 'src/layouts/partials/font.html' %}
     {% include 'src/layouts/partials/favicon.html' %}
 
-    <link rel="stylesheet" href="/assets/scss/neostrap.scss" />
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="/assets/scss/neostrap.scss"/>
 
-    {% block linksheader %}{% endblock %} 
-    {% block scriptheader %}{% endblock %}
-
-    {% block styles %}{% endblock %} 
-  </head>
-  <body>
-    {% include 'src/layouts/partials/navbars/primary.html' %} 
-    
-    {% block content %}{% endblock %}
-
-    {% include 'src/layouts/partials/footer/single.html' %} 
-    {% include 'src/layouts/partials/back-button.html' %} 
-
+    <!-- Core Scripts -->
     <script src="/assets/js/init-theme.ts" type="module"></script>
     <script src="/assets/js/neostrap.ts" type="module"></script>
-    
+
+    <!-- Additional External Source -->
+    {% block linksheader %}{% endblock %}
+    {% block scriptheader %}{% endblock %}
+
+    <!-- Additional Styles -->
+    {% block styles %}{% endblock %}
+  </head>
+  <body class="neo-full-height">
+    {% include 'src/layouts/partials/navbars/primary.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'src/layouts/partials/footer/single.html' %}
+    {% include 'src/layouts/partials/back-button.html' %}
+
+    <!-- Additional Scripts -->
     <script src="/assets/static/js/all.js"></script>
     <script src="/assets/static/js/custom-script.js"></script>
 
+    <!-- Additional Script -->
     {% block js %}{% endblock %}
   </body>
 </html>

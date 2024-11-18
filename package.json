@@ -10,7 +10,7 @@
     "build:prod": "vite build && npm run zip",
     "build:clean": "rm -rf dist neostrap.zip",
     "serve": "vite preview",
-    "zip": "bestzip neostrap.zip dist/*",
+    "zip": "bestzip neostrap-dist.zip dist/*",
     "prettify": "prettier --ignore-path .gitignore --write 'dist/*.html'"
   },
   "type": "module",
@@ -74,6 +74,7 @@
     "remixicons": "^1.0.0",
     "simple-datatables": "^9.2.1",
     "summernote": "^0.9.1",
+    "svgo": "^3.3.2",
     "sweetalert2": "^11.14.5",
     "tinymce": "^7.5.1",
     "toastify-js": "^1.12.0",

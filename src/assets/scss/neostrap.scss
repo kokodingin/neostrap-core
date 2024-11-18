@@ -19,3 +19,11 @@
 .font-body {
   font-family: 'DM Sans', sans-serif;
 }
+
+// ------------ Layouting ------------------------- //
+.neo-full-height {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
