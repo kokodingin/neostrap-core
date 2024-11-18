@@ -91,6 +91,24 @@
       font-family: 'JetBrains Mono', monospace;
     }
   </style>
+
+  <style>
+    .featured .icon {
+      margin-bottom: 1rem;
+    }
+
+    .featured .icon,
+    .featured .icon img {
+      display: flex;
+      width: 3rem;
+      height: 3rem;
+      background: rgba(var(--ns-dark-rgb), .025);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
@@ -104,7 +122,7 @@
             <h2 class="h5 mb-2">Oleh KoDinus Groups</h2>
             <p>Template admin dan landing page bootstrap bergaya NeoBrutalism Design yang dengan desain minimalis, brutal dan ganas. Proyek ini didukung oleh <a href="https://www.facebook.com/groups/programmerhandal/">Ingin Menjadi Programmer Handal Namun Enggan Ngoding (IMPHNEN)</a>.</p>
 
-            <a href="./docs-component-index.html" class="btn mx-auto mx-lg-0 btn-neoraised btn-primary">
+            <a href="./docs-component-index.html" class="btn mx-auto mx-lg-0 btn-primary">
               <span>Lihat Komponen</span>
               <i class="fas fa-fw fa-arrow-right"></i>
             </a>
@@ -126,36 +144,36 @@
             <div class="tech-stack-grid-lg">
               {% set techItems = [
                 {
-                  src: "/assets/static/images/icons/html.png",
+                  src: "/assets/static/images/icons/techstack/html.png",
                   name: "HTML",
                   disabled: false,
                   href: './docs-component-index.html'
                 }, {
-                  src: "/assets/static/images/icons/laravel.svg",
+                  src: "/assets/static/images/icons/techstack/laravel.svg",
                   name: "Laravel",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/vue.svg",
+                  src: "/assets/static/images/icons/techstack/vue.svg",
                   name: "Vue.js",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/nextjs.svg",
+                  src: "/assets/static/images/icons/techstack/nextjs.svg",
                   name: "Next.js",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/inertia.png",
+                  src: "/assets/static/images/icons/techstack/inertia.png",
                   name: "Inertia Laravel",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/inertia.png",
+                  src: "/assets/static/images/icons/techstack/inertia.png",
                   name: "Inertia Adonis",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/react.png",
+                  src: "/assets/static/images/icons/techstack/react.png",
                   name: "React",
                   disabled: true
                 }, {
-                  src: "/assets/static/images/icons/figma.svg",
+                  src: "/assets/static/images/icons/techstack/figma.svg",
                   name: "Figma",
                   disabled: true
                 }
@@ -183,9 +201,90 @@
         </div>
 
         <div class="row g-3">
-          {% for i in [1,2,3,4,5,6] %}
+          {% for i in[
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ] %}
             <div class="col-md-4">
               <div class="coming-soon-block projecting-16x9 rounded overflow-hidden"></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="need-space bg-primary-subtle">
+      <div class="container">
+        <div class="row pb-4">
+          <div class="col-md-6 mx-auto text-center">
+            <h3>Kerangka HTML dan Fitur Keren.</h3>
+            <p>NeoStrap memberikan banyak varian dan fitur keren untuk kamu yang suka dengan kustomisasi.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          {% set frameworksSet = [
+            {
+              icon: 'vitejs.svg',
+              title: 'ViteJS - Pembendel Berkas',
+              text: 'ViteJS adalah pembendel berkas yang menjadi satu paket yang padu dan ringkas. Solusi ini mendukung di semua platform peramban, memudahkan pengembangan dengan kecepatan tinggi.'
+            },
+            {
+              icon: 'apexchart.png',
+              title: 'ApexCharts - Pustaka Grafik',
+              text: 'ApexCharts adalah pustaka charting modern yang digunakan untuk membuat grafik interaktif. Sangat mudah digunakan untuk berbagai kebutuhan visualisasi data di aplikasi.'
+            },
+            {
+              icon: 'npm.svg',
+              title: 'NPM - Pengelola Paket',
+              text: 'NPM menyediakan akses ke ribuan paket open-source yang dapat digunakan untuk berbagai kebutuhan proyek pengembangan modern. Pengelolaan paket menjadi lebih mudah dan terstruktur.'
+            },
+            {
+              icon: 'bun.svg',
+              title: 'Bun - Runtime JavaScript',
+              text: 'Bun adalah runtime JavaScript yang cepat dengan built-in bundler, transpiler, serta alat pengelola paket. Proses instalasi menjadi sangat cepat dan efisien untuk semua proyek.'
+            },
+            {
+              icon: 'sass.svg',
+              title: 'Sass - Preprocessor CSS',
+              text: 'Sass adalah preprocessor CSS yang memperluas sintaks CSS dengan fitur-fitur seperti variabel dan mixin. Ini membantu mengelola dan membuat kode CSS yang lebih terstruktur dan efisien.'
+            },
+            {
+              icon: 'bootstrap.svg',
+              title: 'Bootstrap - Framework CSS',
+              text: 'Bootstrap adalah framework CSS paling populer yang memudahkan pengembangan desain antarmuka. Membantu dalam pembuatan layout responsif dan modern dengan komponen bawaan.'
+            },
+            {
+              icon: 'chartjs.svg',
+              title: 'Chart Js - Simple and Flexible Charting',
+              text: 'Chart Js adalah pustaka charting yang simple dan fleksibel yang dapat digunakan di semua halaman. Proses pemuatan pustaka ringan dan ideal untuk kebutuhan visualisasi data.'
+            },
+            {
+              icon: 'datatable.png',
+              title: 'Datatables - Pustaka Tabel Interaktif',
+              text: 'Datatables adalah pustaka tabel interaktif yang mudah digunakan. Cocok untuk semua halaman dan mendukung pemuatan data secara efisien untuk meningkatkan interaksi pengguna.'
+            },
+            {
+              icon: 'i18next.svg',
+              title: 'i18next - Dukungan Multibahasa',
+              text: 'i18next menyederhanakan proses penambahan dukungan multibahasa ke aplikasi web. Memberikan pengalaman pengguna yang dilokalkan dan fleksibel di berbagai platform.'
+            }
+        ] %}
+          {% for item in frameworksSet %}
+            <div class="col-md-4">
+              <div class="card featured card-neoraised overflow-hidden">
+                <div class="card-body">
+                  <div class="icon">
+                    <img src="/assets/static/images/icons/featured/{{ item.icon }}" alt="{{ item.title }}"/>
+                  </div>
+                  <strong class="mb-2 d-block">{{ item.title }}</strong>
+                  <p class="m-0 opacity-75">{{ item.text }}</p>
+                </div>
+              </div>
             </div>
           {% endfor %}
         </div>

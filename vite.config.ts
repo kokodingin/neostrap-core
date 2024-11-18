@@ -10,11 +10,9 @@ import { fileURLToPath } from 'url';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
 import fs from 'fs';
+import legacy from '@vitejs/plugin-legacy'
 import nunjucks from 'vite-plugin-nunjucks';
-import path, { resolve } from 'path';
-import { minify } from 'terser';
-import CleanCSS from 'clean-css';
-import SVGO from 'svgo';
+import path, { extname, resolve } from 'path';
 
 /**
  * Current file and directory path configuration
@@ -111,7 +109,7 @@ const VENDOR_MODULES: ModuleCopyConfig = {
  * Prepares module copy configurations for the build process
  * @returns {Array<{src: string; dest: string; rename: string}>} Array of copy configurations
  */
-const prepareModuleCopyConfig = (): Array<{ src: string; dest: string; rename: string; }> => {
+const prepareModuleCopyConfig = () => {
   return Object.entries(VENDOR_MODULES).map(([moduleName, hasDistFolder]) => ({
     src: normalizePath(
       resolve(
@@ -149,38 +147,6 @@ const INLINE_BUILD_CONFIG: InlineConfig = {
 
 build(INLINE_BUILD_CONFIG);
 
-
-/**
- * Minifies assets (JS, CSS, SVG) in the given directory
- * @param {string} dir - Directory path
- */
-const minifyAssets = async (dir: string) => {
-  const files = fs.readdirSync(dir);
-  for (const file of files) {
-    const filePath = path.join(dir, file);
-    const ext = path.extname(file);
-
-    if (fs.statSync(filePath).isDirectory()) {
-      await minifyAssets(filePath); // Recursively minify subdirectories
-    } else if (ext === '.js') {
-      const code = fs.readFileSync(filePath, 'utf-8');
-      const result = await minify(code);
-      if (result.code) {
-        fs.writeFileSync(filePath, result.code, 'utf-8');
-      }
-    } else if (ext === '.css') {
-      const css = fs.readFileSync(filePath, 'utf-8');
-      const minified = new CleanCSS().minify(css);
-      fs.writeFileSync(filePath, minified.styles, 'utf-8');
-    } else if (ext === '.svg') {
-      const svg = fs.readFileSync(filePath, 'utf-8');
-      const result = await SVGO.optimize(svg);
-      fs.writeFileSync(filePath, result.data, 'utf-8');
-    }
-  }
-};
-
-
 /**
  * Main Vite configuration
  */
@@ -195,6 +161,11 @@ const config: UserConfigExport = defineConfig((env) => ({
     cors: true,
   },
   plugins: [
+    // legacy({
+    //   targets: ['defaults', 'not IE 11'],
+    //   renderLegacyChunks: true,
+    //   modernPolyfills: true,
+    // }),
     ViteMinifyPlugin({
       html5: true,
       minifyCSS: true,
@@ -255,33 +226,38 @@ const config: UserConfigExport = defineConfig((env) => ({
   build: {
     emptyOutDir: true,
     manifest: true,
-    copyPublicDir: true,
     minify: 'esbuild',
-    chunkSizeWarningLimit: 2048,
     targets: 'es2015',
     outDir: resolve(CURRENT_DIRNAME, 'dist'),
     rollupOptions: {
       input: getHtmlFiles(),
       output: {
         format: 'es',
-        
-        entryFileNames: `assets/compiled/js/[name].js`,
-        chunkFileNames: `assets/compiled/js/[name].js`,
+        entryFileNames: 'assets/bundled/js/[name].js',
+        chunkFileNames: 'assets/bundled/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const fileName = assetInfo.name || 'default';
+          const extension = extname(fileName).slice(1);
 
-        assetFileNames: ({ names }) => {
-          const extname = names?.[0]?.split('.')?.pop();
-          let folder = extname ? `${extname}/` : '';
+          let assetFolder = extension ? `${extension}/` : '';
 
-          if (['woff', 'woff2', 'ttf'].includes(String(extname))) {
-            folder = 'fonts/'
+          if (['woff', 'woff2', 'ttf'].includes(extension)) {
+            assetFolder = 'fonts/';
           }
 
-          return `assets/compiled/${folder}[name][extname]`
+          return `assets/bundled/${assetFolder}[name][extname]`;
+        },
+        manualChunks: {
+          vendor: [
+            'bootstrap',
+            'perfect-scrollbar',
+            '@fortawesome/fontawesome-free',
+            'filepond',
+            'apexcharts',
+            'chart.js'
+          ]
         }
       },
-    },
-    buildEnd() {
-      minifyAssets(resolve(CURRENT_DIRNAME, 'dist/assets/static'));
     },
   },
 }));
