@@ -62,7 +62,7 @@
     "filepond-plugin-image-resize": "^2.0.10",
     "flatpickr": "^4.6.13",
     "glob": "^11.0.0",
-    "i18next": "^23.16.5",
+    "i18next": "^24.0.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.6.2",
     "i18next-localstorage-cache": "^1.1.1",
