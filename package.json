@@ -39,7 +39,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@icon/dripicons": "2.0.0-alpha.3",
     "@popperjs/core": "^2.11.8",
-    "@vitejs/plugin-legacy": "^5.4.3",
+    "@vitejs/plugin-legacy": "^6.0.0",
     "apexcharts": "^4.0.0",
     "babylon": "^6.18.0",
     "bestzip": "^2.2.1",
@@ -101,7 +101,7 @@
     "prettify": "^0.1.7",
     "sass": "1.77.6 --save-dev",
     "tailwind-merge": "^2.5.4",
-    "vite": "^5.4.11",
+    "vite": "^6.0.3",
     "vite-plugin-minify": "^2.0.1",
     "vite-plugin-static-copy": "^2.1.0",
     "vituum": "^1.1.1"
