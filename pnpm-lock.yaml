@@ -90,8 +90,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       i18next:
-        specifier: ^23.16.5
-        version: 23.16.5
+        specifier: ^24.1.0
+        version: 24.1.0
       i18next-browser-languagedetector:
         specifier: ^8.0.0
         version: 8.0.0
@@ -1853,8 +1853,13 @@ packages:
   i18next-sprintf-postprocessor@0.2.2:
     resolution: {integrity: sha512-c/IT9xuMyTfJ/3Ds+DPtb0vYVuykbMyGChZ5OGZTzFDV7Kgst1nrNOwdbZ+PkcA5kLXEE3U0RKkNbabj07261w==}
 
-  i18next@23.16.5:
-    resolution: {integrity: sha512-KTlhE3EP9x6pPTAW7dy0WKIhoCpfOGhRQlO+jttQLgzVaoOjWwBWramu7Pp0i+8wDNduuzXfe3kkVbzrKyrbTA==}
+  i18next@24.1.0:
+    resolution: {integrity: sha512-suKlX82AlptkMUO5YRfaAeH4FQyyKvR66jNaubTMiyPPMx7INU6PXAiy3PGULc0q6K+t9nxmDf/TRj9KjAivmw==}
+    peerDependencies:
+      typescript: ^5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -4242,7 +4247,7 @@ snapshots:
 
   i18next-sprintf-postprocessor@0.2.2: {}
 
-  i18next@23.16.5:
+  i18next@24.1.0:
     dependencies:
       '@babel/runtime': 7.26.0
 
