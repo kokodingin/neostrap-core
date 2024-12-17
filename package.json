@@ -80,7 +80,7 @@
     "simple-datatables": "^9.2.1",
     "summernote": "^0.9.1",
     "svgo": "^3.3.2",
-    "sweetalert2": "^11.7.2",
+    "sweetalert2": "^11.15.2",
     "tinymce": "^7.5.1",
     "toastify-js": "^1.12.0",
     "vite-plugin-html": "^3.2.2",
