@@ -103,7 +103,7 @@
     "tailwind-merge": "^2.5.5",
     "vite": "^5.4.11",
     "vite-plugin-minify": "^2.0.1",
-    "vite-plugin-static-copy": "^2.1.0",
+    "vite-plugin-static-copy": "^2.2.0",
     "vituum": "^1.1.1"
   }
 }
