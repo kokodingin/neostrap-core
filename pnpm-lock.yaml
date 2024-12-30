@@ -60,29 +60,29 @@ importers:
         specifier: ^4.29.2
         version: 4.29.2
       filepond:
-        specifier: ^4.32.1
-        version: 4.32.1
+        specifier: ^4.32.6
+        version: 4.32.6
       filepond-plugin-file-validate-size:
         specifier: ^2.2.8
-        version: 2.2.8(filepond@4.32.1)
+        version: 2.2.8(filepond@4.32.6)
       filepond-plugin-file-validate-type:
         specifier: ^1.2.9
-        version: 1.2.9(filepond@4.32.1)
+        version: 1.2.9(filepond@4.32.6)
       filepond-plugin-image-crop:
         specifier: ^2.0.6
-        version: 2.0.6(filepond@4.32.1)
+        version: 2.0.6(filepond@4.32.6)
       filepond-plugin-image-exif-orientation:
         specifier: ^1.0.11
-        version: 1.0.11(filepond@4.32.1)
+        version: 1.0.11(filepond@4.32.6)
       filepond-plugin-image-filter:
         specifier: ^1.0.1
-        version: 1.0.1(filepond@4.32.1)
+        version: 1.0.1(filepond@4.32.6)
       filepond-plugin-image-preview:
         specifier: ^4.6.12
-        version: 4.6.12(filepond@4.32.1)
+        version: 4.6.12(filepond@4.32.6)
       filepond-plugin-image-resize:
         specifier: ^2.0.10
-        version: 2.0.10(filepond@4.32.1)
+        version: 2.0.10(filepond@4.32.6)
       flatpickr:
         specifier: ^4.6.13
         version: 4.6.13
@@ -1744,8 +1744,8 @@ packages:
     peerDependencies:
       filepond: '>=3.x <5.x'
 
-  filepond@4.32.1:
-    resolution: {integrity: sha512-saY+F6VsiUomUH+w/sFO49gwL+GZG3WglSbg46ubuowSY3imE6dl1wUu48VT1NnIIeXFqRUEDt9td2QP8C6uDg==}
+  filepond@4.32.6:
+    resolution: {integrity: sha512-9EM6Vvny3K5s7guxegedByQx8n6ycUFaoF+Wo20+t1DYNt+vQaOtkGy2jnY8/2roAlskUnwJI1rAnAhzBPXwiw==}
 
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -4164,35 +4164,35 @@ snapshots:
     dependencies:
       minimatch: 5.1.6
 
-  filepond-plugin-file-validate-size@2.2.8(filepond@4.32.1):
+  filepond-plugin-file-validate-size@2.2.8(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-file-validate-type@1.2.9(filepond@4.32.1):
+  filepond-plugin-file-validate-type@1.2.9(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-image-crop@2.0.6(filepond@4.32.1):
+  filepond-plugin-image-crop@2.0.6(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.1):
+  filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-image-filter@1.0.1(filepond@4.32.1):
+  filepond-plugin-image-filter@1.0.1(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-image-preview@4.6.12(filepond@4.32.1):
+  filepond-plugin-image-preview@4.6.12(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond-plugin-image-resize@2.0.10(filepond@4.32.1):
+  filepond-plugin-image-resize@2.0.10(filepond@4.32.6):
     dependencies:
-      filepond: 4.32.1
+      filepond: 4.32.6
 
-  filepond@4.32.1: {}
+  filepond@4.32.6: {}
 
   fill-range@7.1.1:
     dependencies:
