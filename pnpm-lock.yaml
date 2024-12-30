@@ -147,8 +147,8 @@ importers:
         specifier: ^11.15.2
         version: 11.15.2
       tinymce:
-        specifier: ^7.5.1
-        version: 7.5.1
+        specifier: ^7.6.0
+        version: 7.6.0
       toastify-js:
         specifier: ^1.12.0
         version: 1.12.0
@@ -2448,8 +2448,8 @@ packages:
   ticky@1.0.1:
     resolution: {integrity: sha512-RX35iq/D+lrsqhcPWIazM9ELkjOe30MSeoBHQHSsRwd1YuhJO5ui1K1/R0r7N3mFvbLBs33idw+eR6j+w6i/DA==}
 
-  tinymce@7.5.1:
-    resolution: {integrity: sha512-GRXJUB0BEIOUHUEC+q9IjsgWGIAQ4Tn5t5hfpB/YR7No3oPgKHG03v1d3nbov9aqdyVW7Be+UD4I3ZerQG30VQ==}
+  tinymce@7.6.0:
+    resolution: {integrity: sha512-kUrklnD7H8JbpSDEGRh51GKK6Mrf+pR9neSDzUHvXKV+2oRtMB7sqfAtEOnM0/WKdstwaX0qoNCZNo2H1Y0EFA==}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -4884,7 +4884,7 @@ snapshots:
 
   ticky@1.0.1: {}
 
-  tinymce@7.5.1: {}
+  tinymce@7.6.0: {}
 
   to-regex-range@5.0.1:
     dependencies:
