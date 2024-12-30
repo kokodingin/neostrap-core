@@ -144,8 +144,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       sweetalert2:
-        specifier: ^11.15.2
-        version: 11.15.2
+        specifier: ^11.15.3
+        version: 11.15.3
       tinymce:
         specifier: ^7.5.1
         version: 7.5.1
@@ -2427,8 +2427,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  sweetalert2@11.15.2:
-    resolution: {integrity: sha512-KSfHZTU2f+iivA2wudlL1jv9FjvEtJW9Fc0GKC6hhEsZS7SNz3Ppfv92Nerw0E2qqGNT9mPB/07SYEASbHvS+A==}
+  sweetalert2@11.15.3:
+    resolution: {integrity: sha512-+0imNg+XYL8tKgx8hM0xoiXX3KfgxHDmiDc8nTJFO89fQEEhJlkecSdyYOZ3IhVMcUmoNte4fTIwWiugwkPU6w==}
 
   systemjs@6.15.1:
     resolution: {integrity: sha512-Nk8c4lXvMB98MtbmjX7JwJRgJOL8fluecYCfCeYBznwmpOs8Bf15hLM6z4z71EDAhQVrQrI+wt1aLWSXZq+hXA==}
@@ -4861,7 +4861,7 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
 
-  sweetalert2@11.15.2: {}
+  sweetalert2@11.15.3: {}
 
   systemjs@6.15.1: {}
 
