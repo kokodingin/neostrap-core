@@ -92,7 +92,7 @@
     "@types/feather-icons": "^4.29.4",
     "@types/html-minifier": "^4.0.5",
     "@types/jquery": "^3.5.32",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.2",
     "fs": "0.0.1-security",
     "html-minifier": "^4.0.0",
     "minify": "^12.0.0",
