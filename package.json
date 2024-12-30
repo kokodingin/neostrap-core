@@ -87,7 +87,7 @@
     "vite-plugin-nunjucks": "^0.2.0"
   },
   "devDependencies": {
-    "@babel/parser": "^7.26.2",
+    "@babel/parser": "^7.26.3",
     "@types/bootstrap": "^5.2.10",
     "@types/feather-icons": "^4.29.4",
     "@types/html-minifier": "^4.0.5",
